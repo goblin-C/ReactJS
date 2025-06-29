@@ -1,0 +1,40 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --font-sans: "Roboto", Helvetica, Arial, Sans-Serif;
+  --bold: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+
+/* Center the logo in all screen sizes */
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+@media (min-width: 768px) {
+  .navbar-inner {
+    margin-left: 165px;
+    margin-right: 165px;
+  }
+}
+
+
+

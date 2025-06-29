@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fixed Responsive Navbar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-md bg-light">
+    <div class="container-fluid">
+
+      <!-- Top Row: Mobile View -->
+      <div class="d-flex d-md-none w-100 align-items-center justify-content-between">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand text-black fw-bold mx-auto" href="#">Landing</a>
+        <button class="btn btn-warning btn-sm px-4 rounded-0">Buy Now</button>
+      </div>
+
+      <!-- Mobile Collapse Links (VISIBLE when toggled) -->
+      <div class="collapse d-md-none mt-2" id="mobileNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-black" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-black" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link text-black" href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Desktop View Only (≥768px) -->
+      <div class="d-none d-md-flex w-100 justify-content-between navbar-inner align-items-center">
+        <!-- Nav Links -->
+        <div class="d-flex gap-4">
+          <a class="nav-link text-black" href="#">Home</a>
+          <a class="nav-link text-black" href="#">About</a>
+          <a class="nav-link text-black" href="#">Contact</a>
+        </div>
+
+        <!-- Centered Logo -->
+        <div class="position-absolute start-50 translate-middle-x">
+          <a class="navbar-brand text-black fw-bold" href="#">Landing</a>
+        </div>
+
+        <!-- Buy Now Button -->
+        <div>
+          <button class="btn btn-danger px-5 rounded-0">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Landing Section -->
+<!-- Hero Section -->
+<section class="hero-section m-5">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left Content -->
+      <div class="col-md-6 text-center text-md-start px-4">
+        <h1 class="fw-bold mb-3">Introduce Your Product<br>Quickly & Effectively</h1>
+        <p class="text-muted mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>
+        <p class="text-muted mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
+        </p>
+        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+          <button class="btn btn-dark px-4 rounded-0">Purchase UI Kit</button>
+          <button class="btn btn-outline-dark px-4 rounded-0">Learn More</button>
+        </div>
+      </div>
+
+    <!-- Right Image -->
+    <div class="col-md-6 text-center mt-5 mt-md-0 d-none d-md-block">
+    <img src="/mnt/data/18bf4f8c-f64c-4cf5-b591-365ca46e40ce.png" class="img-fluid" alt="Hero Image">
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="../Milestone_1/scripts/script.js"></script>
+</body>
+</html>
