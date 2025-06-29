@@ -44,6 +44,11 @@ html {
   z-index: 1020;
 }
 
+.triple-feature-section img {
+  max-height: 350px;
+  object-fit: contain;
+}
+
 /* ---------- MOBILE RESPONSIVE ---------- */
 @media (min-width: 768px) {
   .navbar-inner {
