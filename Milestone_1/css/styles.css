@@ -21,11 +21,27 @@ html {
 }
 
 
-/* Center the logo in all screen sizes */
-.logo-center {
+/* Center logo */
+.position-absolute.start-50.translate-middle-x {
+  text-align: center;
+}
+
+/* Make the mobile nav dropdown float */
+#mobileNav {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* same as navbar light bg */
+  z-index: 1000;
+  padding: 10px 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Make navbar position relative for dropdown */
+.navbar {
+  position: relative;
+  z-index: 1020;
 }
 
 /* ---------- MOBILE RESPONSIVE ---------- */
