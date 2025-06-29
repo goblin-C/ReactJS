@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto';
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 2rem;
+   color: #37447E;
+}
+.feature-section.bg-white {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.btn-primary-custom {
+  background-color: #111B47;
+  border-color: #111B47;
+  color: white;
+  padding: 8px 70px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.btn-primary-custom:hover {
+  background-color: #34495e;
+  border-color: #34495e;
+   color: white;
+}
+
+.btn-outline-custom {
+  border: 2px solid #111B47;
+  color: #6c757d;
+  background: transparent;
+  padding: 8px 70px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.btn-outline-custom:hover {
+  background-color: #6c757d;
+  color: white;
+}
+.pricing-card {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero content wrapper to center content vertically */
+.hero-content-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 200px 0; /* Add padding to create space between navbar and content */
+}
+
+/* Default: full screen on right side */
+.hero-illustration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image inside it */
+.person-silhouette {
+  width: 100%;
+  height: 100%;
+  background: url('img/designer_1.png') no-repeat center right;
+  background-size: cover;
+  z-index: 1;
+}
+
+/* Floating bubbles */
+.floating-elements {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Keyframe animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Ensure text/nav is above */
+.hero-section .container,
+.hero-section .navbar {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 991.98px) {
+  /* Hide the original image position and recreate it after content */
+  .hero-illustration {
+    display: none; /* Hide original positioned image */
+  }
+
+  /* Create new image after content using pseudo-element */
+  .hero-section::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 300px;
+    background: url('../Milestones_ReactJS/Milestone_1/assets/hero-illustration.png') no-repeat center center;
+    background-size: cover;
+    margin-top: 1rem;
+  }
+
+  .hero-section .navbar {
+    padding: 0.5rem 0;
+    position: relative;
+  }
+
+  /* Keep brand fixed and prevent it from moving */
+  .hero-section .navbar-brand {
+    position: absolute !important;
+    top: 0.75rem !important; /* Fixed position from top */
+    left: 1rem !important;
+    transform: none !important; /* Remove transform to prevent movement */
+    margin: 0 !important;
+    z-index: 5; /* Higher z-index to stay above collapsed menu */
+  }
+
+  /*  toggler is visible and on the right */
+  .hero-section .navbar-toggler {
+    position: absolute;
+    top:-0.25rem;
+    right: 1rem;
+    z-index: 5;
+  }
+
+
+  .hero-section .navbar .container {
+    position: relative;
+    padding: 30px 1rem;
+    min-height: 3rem;
+  }
+
+  .hero-section .navbar-collapse {
+    position: relative;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  }
+
+  /* Add container-like spacing to main content */
+  .hero-section > .container {
+    padding: 0 1rem; /* side padding */
+  }
+
+  /* Content styling */
+  .hero-section .row {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Compact text */
+  .hero-section .hero-title {
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-section .hero-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  /* Adjust hero content wrapper for mobile */
+  .hero-content-wrapper {
+    padding: 20px 0;
+  }
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color:#091133;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  color:#505F98;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+.section-two {
+  padding: 80px 0;
+  background: white;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111B47;
+}
+
+.section-text {
+  color: #505F98;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  height: 100%;
+  border: 1px solid #f0f0f0;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.feature-item h5 {
+  font-size: 1.5rem;
+  color: #111B47;
+  margin: 0;
+}
+.feature-item p {
+  font-size: 1rem;
+  color:#5D6970;
+  line-height: 1.5;
+}
+
+.feature-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #50342c;
+  margin-bottom: 15px;
+}
+
+.feature-text {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.illustration-two {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  border-radius: 20px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  position: relative;
+}
+.divider {
+  height: 5px;              /* Thin line */
+  background-color: #37447E; /* Blue color */
+  width: 100%;              /* Full width */
+}
+
+
+.navbar-nav .nav-link {
+  color: #6c757d !important;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #2c3e50 !important;
+}
+@media (max-width: 991.98px) {
+  .hero-bg-right {
+    display: none;
+  }
+}
+
+/* Pricing */
+.pricing-section {
+  background: var(--white);
+  padding: 80px 0;
+}
+
+.pricing-section .section-text {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  max-width: 400px;
+  padding: 40px 30px;
+  /* background: var(--white); */
+  /* border-radius: 15px; */
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.1); */
+}
+
+.price-amount {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.price-period {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+    background-color: #e8e9f3;
+    padding: 40px 0;
+    border-top: 1px solid #d1d5db;
+}
+
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: #9ca3af;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    flex: 1;
+}
+.navbar-brand-d {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #37447E;
+  text-align: center;
+  flex: 4;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.footer-nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #6b7280;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-links a {
+    color: #9ca3af;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-nav {
+        gap: 20px;
+    }
+
+    .copyright {
+        order: 1;
+    }
+    .navbar-brand-d {
+        order: 2;
+        margin-bottom: 10px;
+    }
+
+    .footer-right {
+        order: 3;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .social-links {
+        gap: 12px;
+    }
+}
