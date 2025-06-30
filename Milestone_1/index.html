@@ -9,181 +9,179 @@
 </head>
 <body>
 
-<header>
-  <nav class="navbar navbar-expand-md">
-    <div class="container-fluid">
-
-      <!-- Top Row: Mobile View -->
-      <div class="d-flex d-md-none w-100 align-items-center justify-content-between">
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand text-black fw-bold mx-auto" href="#">Landing</a>
-        <button class="btn btn-color btn-sm px-4 rounded-0">Buy Now</button>
-      </div>
-
-      <!-- Mobile Collapse Links (VISIBLE when toggled) -->
-      <div class="collapse d-md-none mt-2" id="mobileNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-black" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link text-black" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link text-black" href="#">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Desktop View Only (≥768px) -->
-      <div class="d-none d-md-flex w-100 justify-content-between navbar-inner align-items-center">
-        <!-- Nav Links -->
-        <div class="d-flex gap-4">
-          <a class="nav-link text-black" href="#">Home</a>
-          <a class="nav-link text-black" href="#">About</a>
-          <a class="nav-link text-black" href="#">Contact</a>
+<section class="landing-top">
+  <!-- Header/Nav -->
+  <header>
+    <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <!-- Top Row: Mobile -->
+        <div class="d-flex d-md-none w-100 align-items-center justify-content-between">
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
+          <button class="btn btn-color btn-sm px-4 rounded-0">Buy Now</button>
         </div>
 
-        <!-- Centered Logo -->
-        <div class="position-absolute start-50 translate-middle-x">
-          <a class="navbar-brand text-black fw-bold" href="#">Landing</a>
+        <!-- Mobile Collapse -->
+        <div class="collapse d-md-none mt-2" id="mobileNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
         </div>
 
-        <!-- Buy Now Button -->
-        <div>
-          <button class="btn btn-color px-5 rounded-0">Buy Now</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<!-- Landing Section -->
-<!-- Hero Section -->
-<section class="hero-section m-5">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <!-- Left Content -->
-      <div class="col-md-6 text-center text-md-start px-4">
-        <h1 class="fw-bold mb-3">Introduce Your Product<br>Quickly & Effectively</h1>
-        <p class="text-muted mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
-        <p class="text-muted mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-        </p>
-        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-          <button class="btn btn-color px-4 rounded-0">Purchase UI Kit</button>
-          <button class="btn btn-outline-color px-4 rounded-0">Learn More</button>
-        </div>
-      </div>
-
-    <!-- Right Image -->
-    <div class="col-md-6 text-center mt-5 mt-md-0 d-none d-md-block">
-    <img src="../Milestone_1/assets/hero-illustration.png" class="img-fluid" alt="Hero Image">
-    </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Features Section -->
-<section class="features-section m-5">
-  <div class="container">
-    <div class="row align-items-center">
-
-      <!-- Left Column -->
-      <div class="col-md-6">
-        <h2 class="fw-bold mb-3">Light, Fast & Powerful</h2>
-        <p class="text-muted mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-          Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-        </p>
-
-        <div class="row">
-          <!-- Feature 1 -->
-          <div class="col-sm-6 mb-4">
-            <div class="d-flex align-items-start gap-2">
-            <div>
-              <img class="py-2" src="../Milestone_1/assets/icons/title.svg" alt="icon">
-                <h6 class="fw-semibold">Title Goes Here</h6>
-                <p class="text-muted small mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-                </p>
-              </div>
-            </div>
+        <!-- Desktop Nav -->
+        <div class="d-none d-md-flex w-100 justify-content-between align-items-center">
+          <div class="d-flex gap-4">
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">Contact</a>
           </div>
-          <!-- Feature 2 -->
-          <div class="col-sm-6 mb-4">
-            <div class="d-flex align-items-start gap-2">
-            <div>
-              <img class="py-2" src="../Milestone_1/assets/icons/title.svg" alt="icon">
-                <h6 class="fw-semibold">Title Goes Here</h6>
-                <p class="text-muted small mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-                </p>
-              </div>
-            </div>
+
+          <div class="position-absolute start-50 translate-middle-x">
+            <a class="navbar-brand fw-bold" href="#">Landing</a>
+          </div>
+
+          <div>
+            <button class="btn btn-color px-5 rounded-0">Buy Now</button>
           </div>
         </div>
       </div>
+    </nav>
+  </header>
 
-      <!-- Right Column -->
-      <div class="col-md-6 text-center d-none d-md-block">
-        <img src="../Milestone_1/assets/hero-2.png" class="img-fluid" alt="Feature Image">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- Triple Feature Section -->
-<section class="triple-feature-section px-3 py-5 m-5">
+  <!-- Hero Section -->
+  <section class="hero-section py-5">
     <div class="container">
-    <!-- Feature 1 -->
-    <div class="row align-items-center my-5">
-      <div class="col-md-6 text-center mb-4 mb-md-0">
-        <img src="../Milestone_1/assets/feature-1.png" alt="Feature 1" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <h4 class="fw-bold">Light, Fast & Powerful</h4>
-        <p class="text-muted small mb-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
+      <div class="row align-items-center">
+        <!-- Left Text Content Only -->
+        <div class="col-md-6 text-center text-md-start">
+          <h1 class="fw-bold mb-3">Introduce Your Product<br>Quickly & Effectively</h1>
+          <p class="text-muted mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          </p>
+          <p class="text-muted mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
+          </p>
+          <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+            <button class="btn btn-color px-4 rounded-0">Purchase UI Kit</button>
+            <button class="btn btn-outline-color px-4 rounded-0">Learn More</button>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Feature 2 -->
-    <div class="row align-items-center my-5">
-     <div class="col-md-6 text-center mb-4 mb-md-0">
-        <img src="../Milestone_1/assets/feature-2.png" alt="Feature 2" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <h4 class="fw-bold">Light, Fast & Powerful</h4>
-        <p class="text-muted small mb-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
-      </div>
-    </div>
-
-    <!-- Feature 3 -->
-    <div class="row align-items-center my-5">
-      <div class="col-md-6 text-center mb-4 mb-md-0">
-        <img src="../Milestone_1/assets/feature-3.png" alt="Feature 3" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <h4 class="fw-bold">Light, Fast & Powerful</h4>
-        <p class="text-muted small mb-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
-        <button class="btn btn-color rounded-0 mt-3">Purchase Now</button>
-      </div>
-      </div>
-    </div>
 </section>
+
+
+<!-- FEATURES WRAPPER -->
+<section class="features-wrapper py-5">
+
+  <!-- Feature Highlights Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Left Content -->
+        <div class="col-md-6">
+          <h2 class="fw-bold mb-3">Light, Fast & Powerful</h2>
+          <p class="text-muted mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
+            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+          </p>
+
+          <!-- 2 Features -->
+          <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-sm-6 mb-4">
+              <div class="feature-box d-flex gap-2 align-items-start">
+                <img class="icon" src="../Milestone_1/assets/icons/title.svg" alt="icon">
+                <div>
+                  <h6 class="fw-semibold mb-1">Title Goes Here</h6>
+                  <p class="text-muted small mb-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-sm-6 mb-4">
+              <div class="feature-box d-flex gap-2 align-items-start ">
+                <img class="icon" src="../Milestone_1/assets/icons/title.svg" alt="icon">
+                <div>
+                  <h6 class="fw-semibold mb-1">Title Goes Here</h6>
+                  <p class="text-muted small mb-0">
+                    Aenean commodo ligula eget dolor. Aenean massa.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-md-6 text-center d-none d-md-block">
+          <img src="../Milestone_1/assets/hero-2.png" class="img-fluid" alt="Feature Image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Triple Feature Section -->
+  <section class="triple-feature-section pt-5">
+    <div class="container">
+
+      <!-- Loop for Features -->
+      <!-- Feature 1 -->
+      <div class="row align-items-center my-5">
+        <div class="col-md-6 text-center mb-4 mb-md-0">
+          <img src="../Milestone_1/assets/feature-1.png" alt="Feature 1" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold">Light, Fast & Powerful</h4>
+          <p class="text-muted small mb-0">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="row align-items-center my-5">
+        <div class="col-md-6 text-center mb-4 mb-md-0">
+          <img src="../Milestone_1/assets/feature-2.png" alt="Feature 2" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold">Light, Fast & Powerful</h4>
+          <p class="text-muted small mb-0">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
+            mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="row align-items-center my-5">
+        <div class="col-md-6 text-center mb-4 mb-md-0">
+          <img src="../Milestone_1/assets/feature-3.png" alt="Feature 3" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold">Light, Fast & Powerful</h4>
+          <p class="text-muted small mb-0">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+          </p>
+          <button class="btn btn-color rounded-0 mt-3">Purchase Now</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
 
 
 <!-- Pricing Section -->
@@ -220,7 +218,7 @@
       </div>
      
       <!-- Right -->
-      <div class="col-md-4 mb-3 mb-md-0 text-center">
+      <div class="col-md-4 mb-3 mb-md-0 text-end" id="right-footer">
         <button class="btn btn-color btn-sm rounded-0 ">Purchase now</button>
       </div>
 
