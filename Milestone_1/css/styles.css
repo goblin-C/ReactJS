@@ -3,7 +3,6 @@
 
 :root {
   --font-sans: "Roboto", Helvetica, Arial, Sans-Serif;
-  --bold: 700;
 }
 
 * {
@@ -20,80 +19,65 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
-/* Center logo */
-.position-absolute.start-50.translate-middle-x {
+/* Button color*/
+.btn-color {
+  color: #FFFFFF !important;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0px;
   text-align: center;
+  background-color: #111B47 !important;
 }
 
-/* Make the mobile nav dropdown float */
-#mobileNav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #f8f9fa; /* same as navbar light bg */
-  z-index: 1000;
-  padding: 10px 20px;
-  border-top: 1px solid #dee2e6;
+.btn-color:hover {
+  background-color: #FFFFFF !important;
+  color: #111B47 !important;
 }
 
-/* Make navbar position relative for dropdown */
+.btn-outline-color {
+  background-color: transparent !important;
+  border: 2px solid #111B47;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #111B47 !important;
+}
+
+.btn-outline-color:hover {
+  background-color: #111B47 !important;
+  color: #FFFFFF !important;
+}
+
 .navbar {
-  position: relative;
-  z-index: 1020;
-}
-
-.triple-feature-section p {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-}
-
-.triple-feature-section img {
-  max-height: 350px;
-  object-fit: contain;
+  color: #111B47 !important;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0px;
 }
 
 .pricing-section {
-  background-image: url('../assets/pricing.png'); /* ✅ Use your correct image path */
+  background-image: url('../assets/pricing.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: #111B47 !important;
 }
 
-/* Optional: Add overlay if image is too strong */
-/* .pricing-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* dark overlay
-  z-index: -1;
-} */
-
-.footer-section a:hover {
-  text-decoration: underline;
+.footer-section {
+  background-image: url('../assets/footer.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  color: #111B47 !important;
 }
-.footer-section img {
-  filter: grayscale(1);
-  opacity: 0.8;
-}
-.footer-section img:hover {
-  filter: none;
-  opacity: 1;
-}
-
-/* ---------- MOBILE RESPONSIVE ---------- */
-@media (min-width: 768px) {
-  .navbar-inner {
-    margin-left: 165px;
-    margin-right: 165px;
-  }
-}
-
-
-
