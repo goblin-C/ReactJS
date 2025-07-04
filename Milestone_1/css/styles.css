@@ -13,6 +13,7 @@
 
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin: 0 5% 0 5%;
 }
 
 html {
@@ -23,7 +24,6 @@ html {
   position: relative;
   background-color: #FFFFFF;
   padding-bottom: 60px;
-  overflow: hidden;
 }
 
 /* Add background image using ::after */
@@ -75,6 +75,16 @@ html {
   height: auto;
 }
 
+.sticky-top {
+  position: -webkit-sticky;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1020;
+  width: 100%;
+  background-color: white;
+}
+
 /* Button color*/
 .btn-color {
   color: #FFFFFF !important;
@@ -85,6 +95,7 @@ html {
   letter-spacing: 0px;
   text-align: center;
   background-color: #111B47 !important;
+  border-radius: 2px;
 }
 
 .btn-color:hover {
@@ -124,6 +135,7 @@ html {
 }
 
 .features-section {
+  /* margin: 0 5% 0 5%; */
   padding-top: 60px;
   padding-bottom: 60px;
 }
@@ -140,14 +152,6 @@ html {
   margin-top: 2px;
 }
 
-/* .feature-box h6 {
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.feature-box p {
-  font-size: 13px;
-} */
 
 .pricing-section {
   background-image: url('../assets/pricing.png');
@@ -175,12 +179,23 @@ html {
 
 /* Media Queries */
 @media (max-width: 767px) {
+  body {
+    margin: 0 4px 0 4px;
+  }
+
   .landing-top::after {
     display: none;
   }
 
+  .features-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    font-size: medium !important;
+  }
+
   .triple-feature-section .row {
     text-align: center;
+    font-size: medium !important;
   }
 
   #right-footer {
