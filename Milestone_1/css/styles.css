@@ -6,7 +6,7 @@
   --font-sans: "Roboto", Helvetica, Arial, Sans-Serif;
   --primary-color: #111B47;
   --bg-secondary-color: #37447E;
-  --text-muted: #6c757d;
+  --text-secondary-color: #6c757d;
   --bg-white: #FFFFFF;
   --spacing-sm: 4px;
   --spacing-md: 5%;
@@ -23,6 +23,7 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin: 0;
   padding-top: 80px; /* Space for fixed navbar */
+  /* color: var(--bg-secondary-color); */
 }
 
 html {
@@ -37,7 +38,6 @@ html {
   right: 0;
   z-index: 1020;
   background-color: var(--bg-white);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 15px 0;
   color: var(--bg-secondary-color) !important;
   font-family: "Roboto";
@@ -193,6 +193,7 @@ html {
   line-height: 18px;
   letter-spacing: 0px;
   text-align: center;
+  border-radius: 2px;
   color: var(--primary-color) !important;
 }
 
@@ -281,13 +282,4 @@ html {
 /* Button transitions */
 .btn {
   transition: all 0.3s ease;
-}
-
-/* Image hover effects */
-.img-fluid {
-  transition: transform 0.3s ease;
-}
-
-.img-fluid:hover {
-  transform: scale(1.02);
 }
