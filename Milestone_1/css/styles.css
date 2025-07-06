@@ -139,8 +139,68 @@ body {
   }
 }
 
+/* ==================== SERVICES SECTION STYLES ==================== */
+.triple-service-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==================== PRICING SECTION STYLES ==================== */
+
+/* Pricing Section */
+.pricing-section {
+  background-color: #E7ECFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-bg-img {
+  position: absolute;
+  bottom: 0;             
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ==================== FOOTER SECTION STYLES ==================== */
+/* .footer-section {
+  background-color: #939EA4;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section a,
+.footer-section h5,
+.footer-section small {
+  color: var(--primary-color) !important;
+  text-align: center;
+} */
+
+
+/* Footer Section */
+.footer-section {
+  background-color: #f5f7ff;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section a,
+.footer-section h5,
+.footer-section small {
+  color: var(--primary-color) !important;
+}
+
+hr {
+  border: 1px solid var(--primary-color);
+}
+
 /* ==================== MEDIA QUERIES ==================== */
-@media (max-width: 767.98px) {
+@media (max-width: 767px) {
   .hero-section {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
@@ -149,3 +209,14 @@ body {
     background: none;
   }
 }
+
+@media (max-width: 767px) {
+  .triple-feature-section {
+    text-align: center;
+  }
+
+  .triple-feature-section .btn {
+    width: 100%;
+  }
+}
+
