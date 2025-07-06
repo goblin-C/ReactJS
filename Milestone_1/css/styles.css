@@ -119,8 +119,32 @@ body {
   background-color: var(--bg-white);
 }
 
+/* /* ==================== FEATURES SECTION STYLES ==================== */
+.features-section img.icon {
+  width: 40px;
+  height: auto;
+}
+
+@media (max-width: 767.98px) {
+  .features-section {
+    text-align: center;
+  }
+
+  .features-section h2 {
+    text-align: center;
+  }
+
+  .features-section .d-flex.flex-column {
+    align-items: center !important;
+  }
+}
+
 /* ==================== MEDIA QUERIES ==================== */
 @media (max-width: 767.98px) {
+  .hero-section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
   .hero-section::after {
     background: none;
   }
