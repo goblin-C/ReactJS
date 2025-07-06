@@ -27,7 +27,6 @@ html {
 body {
   font-family: var(--font-sans);
   margin: 0;
-  padding-top: 100px; /* Adjusted to account for expanded navbar on mobile */
 }
 
 /* ==================== NAVIGATION STYLES ==================== */
