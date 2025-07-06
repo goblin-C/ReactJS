@@ -1,9 +1,9 @@
-/* Import Google Font */
+/* ==================== IMPORT GOOGLE FONT ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* ==================== ROOT VARIABLES ==================== */
 :root {
-  --font-sans: "Roboto", Helvetica, Arial, Sans-Serif;
+  --font-sans: "Roboto", Helvetica, Arial, sans-serif;
   --primary-color: #111B47;
   --bg-secondary-color: #37447E;
   --text-secondary-color: #6c757d;
@@ -14,20 +14,20 @@
 
 /* ==================== RESET & BASE STYLES ==================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
   margin: 0;
-  padding-top: 80px; /* Space for fixed navbar */
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding-top: 100px; /* Adjusted to account for expanded navbar on mobile */
 }
 
 /* ==================== NAVIGATION STYLES ==================== */
@@ -40,39 +40,38 @@ html {
   background-color: var(--bg-white);
   padding: 15px 0;
   color: var(--bg-secondary-color) !important;
-  font-family: "Roboto";
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
 }
 
 .navbar-brand {
-  font-family: "Roboto";
   font-weight: 900;
-  color : var(--bg-secondary-color) !important;
+  color: var(--bg-secondary-color) !important;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
 }
 
-/* Container for navbar content - matches page margins */
 .navbar .container-fluid {
-  margin: 0 var(--spacing-md) 0 var(--spacing-md);
+  margin-left: var(--spacing-md);
+  margin-right: var(--spacing-md);
 }
 
 /* ==================== BUTTON STYLES ==================== */
 .btn-color {
   color: var(--bg-white) !important;
-  font-family: "Roboto";
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color);
+  border-radius: 2px;
+  font-family: var(--font-sans);
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   text-align: center;
-  background-color: var(--primary-color) !important;
-  border-radius: 2px;
-  border: 1px solid var(--primary-color);
 }
 
 .btn-color:hover {
@@ -84,14 +83,14 @@ html {
 .btn-outline-color {
   background-color: transparent !important;
   border: 1px solid var(--primary-color);
-  font-family: "Roboto";
+  color: var(--primary-color) !important;
+  border-radius: 2px;
+  font-family: var(--font-sans);
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   text-align: center;
-  border-radius: 2px;
-  color: var(--primary-color) !important;
 }
 
 .btn-outline-color:hover {
@@ -99,4 +98,30 @@ html {
   color: var(--bg-white) !important;
 }
 
+/* ==================== HERO SECTION STYLES ==================== */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 0; /* Remove local top padding, handled via body */
+}
 
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('../assets/hero-illustration.png') no-repeat right center;
+  background-size: contain;
+  background-color: var(--bg-white);
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+@media (max-width: 767.98px) {
+  .hero-section::after {
+    background: none;
+  }
+}
