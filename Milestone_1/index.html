@@ -9,234 +9,52 @@
 </head>
 <body>
 
-  <!-- Header/Nav -->
-  <header>
-    <nav class="navbar navbar-expand-md">
-      <div class="container-fluid">
-        
-        <!-- Top Row: Mobile -->
-        <div class="d-flex d-md-none w-100 align-items-center justify-content-between">
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
-          <button class="btn btn-color btn-sm px-4 rounded-0">Buy Now</button>
-        </div>
+  <!-- Header Section Containing the Navbar -->
+<header class="py-2 py-md-1">
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid px-sm-1 px-md-1">
 
-        <!-- Mobile Collapse -->
-        <div class="collapse d-md-none mt-2" id="mobileNav">
+      <!-- Mobile Top Row -->
+      <div class="d-flex d-md-none w-100 align-items-center justify-content-between">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
+        <!-- Spacer to balance toggler -->
+        <div style="width: 80px;"></div>
+      </div>
+
+      <!-- Mobile Collapse -->
+      <div class="d-md-none">
+        <div class="collapse navbar-collapse mt-2" id="mobileNav">
           <ul class="navbar-nav px-3">
             <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item mt-2">
+              <button class="btn btn-color btn-sm px-4 w-100">Buy Now</button>
+            </li>
           </ul>
         </div>
+      </div>
 
-        <!-- Desktop Nav -->
-        <div class="d-none d-md-flex w-100 justify-content-between align-items-center">
-          <div class="d-flex gap-4">
-            <a class="nav-link" href="#">Home</a>
-            <a class="nav-link" href="#">About</a>
-            <a class="nav-link" href="#">Contact</a>
-          </div>
-
-          <div class="position-absolute start-50 translate-middle-x">
-            <a class="navbar-brand fw-bold" href="#">Landing</a>
-          </div>
-
-          <div>
-            <button class="btn btn-color px-5">Buy Now</button>
-          </div>
+      <!-- Desktop Layout -->
+      <div class="d-none d-md-flex w-100 align-items-center justify-content-between">
+        <div class="d-flex gap-4">
+          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Contact</a>
+        </div>
+        <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
+        <div>
+          <button class="btn btn-color px-5">Buy Now</button>
         </div>
       </div>
-    </nav>
-  </header>
 
-  <section class="landing-top">
-    <!-- Hero Section -->
-    <section class="hero-section py-5">
-      <div class="container-fluid">
-        <div class="col align-items-center">
-          <!-- Left Text Content Only -->
-          <div class="col-md-6 text-center text-md-start">
-            <h1 class="fw-bold mb-3">Introduce Your Product<br>Quickly & Effectively</h1>
-            <p class="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            </p>
-            <p class="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-            </p>
-            <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-              <button class="btn btn-color px-4">Purchase UI Kit</button>
-              <button class="btn btn-outline-color px-4">Learn More</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
-
-  <!-- FEATURES WRAPPER -->
-  <section class="features-wrapper py-3">
-
-    <!-- Feature Highlights Section -->
-    <section class="features-section">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-
-          <!-- Left Content -->
-          <div class="col-md-6">
-            <h2 class="fw-bold mb-3">Light, Fast & Powerful</h2>
-            <p class="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-              Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
-            </p>
-
-            <!-- 2 Features -->
-            <div class="row">
-              <!-- Feature 1 -->
-              <div class="col-sm-6 mb-2">
-                <div class="feature-box d-flex-col gap-2 align-items-center">
-                  <img class="icon" src="assets/icons/title.svg" alt="icon">
-                  <div>
-                    <h6 class="fw-semibold mt-4">Title Goes Here</h6>
-                    <p class="medium mb-0">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- Feature 2 -->
-              <div class="col-sm-6 mb-2">
-                <div class="feature-box d-flex-col gap-2 align-items-start">
-                  <img class="icon" src="assets/icons/title.svg" alt="icon">
-                  <div>
-                    <h6 class="fw-semibold mt-4">Title Goes Here</h6>
-                    <p class="medium mb-0">
-                      Aenean commodo ligula eget dolor. Aenean massa.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Image -->
-          <div class="col-md-6 text-center d-none d-md-block">
-            <img src="assets/hero-2.png" class="img-fluid" alt="Feature Image">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Triple Feature Section -->
-    <section class="triple-feature-section pt-3">
-      <div class="container-fluid">
-
-        <!-- Feature 1 -->
-        <div class="row align-items-center my-5">
-          <div class="col-md-6 text-center mb-4 mb-md-0">
-            <img src="assets/feature-1.png" alt="Feature 1" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h4 class="fw-bold">Light, Fast & Powerful</h4>
-            <p class="small mb-0">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-            </p>
-          </div>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="row align-items-center my-5">
-          <div class="col-md-6 text-center mb-4 mb-md-0">
-            <img src="assets/feature-2.png" alt="Feature 2" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h4 class="fw-bold">Light, Fast & Powerful</h4>
-            <p class="small mb-0">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
-              mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-            </p>
-          </div>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="row align-items-center my-5">
-          <div class="col-md-6 text-center mb-4 mb-md-0">
-            <img src="assets/feature-3.png" alt="Feature 3" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h4 class="fw-bold">Light, Fast & Powerful</h4>
-            <p class="small mb-0">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-            </p>
-            <button class="btn btn-color mt-3">Purchase Now</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </section>
-
-  <!-- Pricing Section -->
-  <section class="pricing-section text-center py-5">
-    <div class="container-fluid">
-      <h3 class="fw-bold mb-3">A Price To Suit Everyone</h3>
-      <p class="mx-auto mb-4" style="max-width: 600px;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      </p>
-
-      <h1 class="fw-bold display-4 mb-0">$40</h1>
-      <p class="text-muted">UI Design Kit</p>
-      <p class="text-muted small mb-4">See. One price. Simple.</p>
-
-      <button class="btn btn-color px-4">Purchase Now</button>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <!-- Footer Section -->
-  <footer class="footer-section bg-light py-4">
-    <div class="container-fluid">
-      <div class="row text-center text-md-start justify-content-center align-items-center">
-
-        <!-- Left -->
-        <div class="col-md-4 mb-3 mb-md-0">
-          <small class="text-muted">©2025 Yourcompany</small>
-        </div>
-
-        <!-- Center -->
-        <div class="col-md-4 mb-3 mb-md-0 text-center">
-          <h5 class="fw-bold m-0">Landing</h5>
-        </div>
-       
-        <!-- Right -->
-        <div class="col-md-4 mb-3 mb-md-0 text-end" id="right-footer">
-          <button class="btn btn-color btn-sm">Purchase now</button>
-        </div>
-
-        <hr class="my-4">
-        
-        <!-- Footer Links -->
-        <div class="col text-center text-md-start">
-          <a href="#" class="text-muted me-3 text-decoration-none">Home</a>
-          <a href="#" class="text-muted me-3 text-decoration-none">About</a>
-          <a href="#" class="text-muted text-decoration-none">Contact</a>
-        </div>
-        
-        <!-- Social Icons -->
-        <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center gap-3">
-          <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" width="20" height="20" alt="facebook" /></a>
-          <a href="#" aria-label="LinkedIn"><img src="assets/icons/linkdin.svg" width="20" height="20" alt="linkedin" /></a>
-          <a href="#" aria-label="Twitter"><img src="assets/icons/twitter.svg" width="20" height="20" alt="twitter" /></a>
-          <a href="#" aria-label="YouTube"><img src="assets/icons/youtube.svg" width="20" height="20" alt="youtube" /></a>
-          <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" width="20" height="20" alt="instagram" /></a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
