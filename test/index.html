@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LandingPage- Milestone1</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../test/styles.css" />
+  </head>
+  <body>
+    <section class="hero">
+    <!-- Hero Image -->
+      <div class="hero-image"></div>
+
+      <!-- Header Section Containing the Navbar -->
+      <header class="fixed-top">
+        <nav class="navbar navbar-expand-md mx-auto">
+          <div class="container-fluid px-sm-1 px-md-1">
+            <!-- Mobile Top Row -->
+            <div
+              class="d-flex d-md-none w-100 align-items-center justify-content-between"
+            >
+              <button
+                class="navbar-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mobileNav"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
+              <!-- Spacer to balance toggler -->
+              <div style="width: 80px"></div>
+            </div>
+
+            <!-- Mobile Collapse -->
+            <div class="d-md-none">
+              <div class="collapse navbar-collapse mt-2" id="mobileNav">
+                <ul class="navbar-nav px-3">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                  <li class="nav-item mt-2">
+                    <button class="btn btn-color btn-sm px-4 w-100">
+                      Buy Now
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Desktop Layout -->
+            <div
+              class="d-none d-md-flex w-100 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-3_8rem">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Contact</a>
+              </div>
+              <a class="navbar-brand fw-bold mx-auto" href="#">Landing</a>
+              <div>
+                <button class="btn btn-color px-5">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section position-relative">
+        <div class="container">
+          <div class="row">
+            <div class="hero-content col-12 col-md-10 col-lg-8">
+              <div class="hero-title mb-3">
+                <h1 class="fw-bold">
+                  Introduce Your Product<br />Quickly & Effectively
+                </h1>
+              </div>
+
+              <div class="hero-description text-muted mb-4">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                  natoque penatibus et magnis dis parturient montes, nascetur
+                  ridiculus <br /><br />
+                  mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                  quis, sem. Nulla consequat massa quis enim.
+                </p>
+              </div>
+
+              <div
+                class="hero-buttons d-flex gap-3 justify-content-center justify-content-md-start"
+              >
+                <button class="btn btn-color px-4 rounded-0">
+                  Purchase UI Kit
+                </button>
+                <button class="btn btn-outline-color px-4 rounded-0">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
