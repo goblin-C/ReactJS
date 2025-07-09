@@ -28,10 +28,15 @@ body {
 }
 
 /* ==================== HERO SECTION IMAGE ==================== */
-.hero {
-    position: relative;
+.hero-image {
+    position: absolute;
     background: url('../test/assets/hero-illustration.png') no-repeat center right;
     background-size: contain;
+    height: 100vh;
+    width: 100%;
+}
+
+.hero {
     height: 100vh;
     width: 100%;
 }
@@ -39,7 +44,7 @@ body {
 /* ==================== NAVIGATION STYLES ==================== */
 .navbar {
   position: fixed;
-  top: 5px;
+  top: 0;
   left: 0;
   right: 0;
   background-color: transparent !important;
@@ -52,9 +57,12 @@ body {
   letter-spacing: 0;
   width: 100%;
   align-items: center;
-  margin: 10px 10px 10px 10px;
+  margin: 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+.navbar.scrolled {
+  background-color: white !important;
+}
 .navbar-brand {
   font-weight: 900;
   color: var(--bg-secondary-color) !important;
@@ -197,6 +205,35 @@ h6
   gap: 3.8rem !important;
 }
 
+/* ==================== PRICING SECTION STYLES ==================== */
+
+.pricing-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: -40px;
+  z-index: -1;
+  background: url('../test/assets/pricing.png');
+  background-color: var(--bg-white);
+}
+
+/* ==================== FOOTER SECTION STYLES ==================== */
+/* Footer Section */
+.footer-section {
+  background-color: #f5f7ff;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section a,
+.footer-section h5,
+.footer-section small {
+  color: var(--primary-color) !important;
+}
+
+hr {
+  border: 1px solid var(--primary-color);
+}
 /* ==================== MEDIA QUERIES ==================== */
 @media screen and (max-width: 768px) {
   .hero {
