@@ -150,6 +150,48 @@ body {
     margin-top: 2rem !important;
 }
 
+/**==================== FEATURE SECTION STYLES ==================== */
+.feature-section,
+h2
+{
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  color: #091133 !important;
+}
+
+.feature-section,
+p
+{
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: #6F7CB2 !important;
+}
+
+.feature-section,
+h6
+{
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: #091133 !important;
+}
+
+.feature-section-description {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: #6F7CB2 !important;
+}
 /* ==================== UTILITY CLASSES ==================== */
 .gap-3_8rem {
   gap: 3.8rem !important;
@@ -159,6 +201,18 @@ body {
 @media screen and (max-width: 768px) {
   .hero {
     background-image: none !important;
+  }
+  .hero-image {
+    display: none;
+  }
+
+  .hero-section {
+    margin-top: 0;
+  }
+
+  .navbar {
+    background-color: #fff !important;
+    margin: 0;
   }
 
   .navbar-collapse {
@@ -176,7 +230,7 @@ body {
   }
 }
 
-@media screen and (max-width: 991.98px) {
+@media screen and (max-width: 992px) {
   .hero-section {
     width: 100%;
     padding: 2rem 1rem;
@@ -184,6 +238,10 @@ body {
     justify-content: center;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .navbar {
+    background-color: #fff !important;
   }
 
   .hero-title h1 {
@@ -207,7 +265,7 @@ body {
   }
 }
 
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: 575px) {
   .navbar-brand {
     font-size: 20px;
   }
