@@ -200,6 +200,29 @@ h6
   letter-spacing: 0px;
   color: #6F7CB2 !important;
 }
+
+/* ==================== SERVICES SECTION STYLES ==================== */
+
+.triple-service-section
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  color: #091133 !important;
+}
+
+.triple-service-section
+p {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: #6F7CB2 !important;
+}
+
 /* ==================== UTILITY CLASSES ==================== */
 .gap-3_8rem {
   gap: 3.8rem !important;
@@ -220,7 +243,7 @@ h6
 /* ==================== FOOTER SECTION STYLES ==================== */
 /* Footer Section */
 .footer-section {
-  background-color: #f5f7ff;
+  background-color: #E7ECFF;
   position: relative;
   z-index: 1;
 }
