@@ -52,9 +52,8 @@ body {
 .background {
   position: absolute;
   top: 0;
-  left: 50%; /* center background horizontally */
+  left: 50%;
   width: 100%;
-  max-width: 1440px; /* do not let it grow beyond 1440px */
   height: 100vh;
   background: url('../test/assets/hero-illustration.png') no-repeat center right;
   background-size: contain;
@@ -69,7 +68,7 @@ body {
   padding: 15px 0;
   font-weight: 400;
   font-size: 14px;
-  color: #505F98 !important;
+  color: var(--color-purple) !important;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .navbar-brand {
@@ -117,7 +116,7 @@ body {
   font-family: var(--font-family-roboto);
   font-weight: 400;
   font-size: 18px;
-  color: #505F98 !important;
+  color: var(--color-purple) !important;
 }
 
 .hero-buttons { 
@@ -144,11 +143,26 @@ body {
   color: var(--color-light-purple) !important;
 }
 
+/* ===================== SERVICE SECTION ==================== */
+.services-section h4 {
+  margin-top: 6rem;
+  font-family: var(--font-family-roboto);
+}
+
+.services-description {
+  margin-top: 2rem;
+  font-family: var(--font-family-roboto);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-light-purple) !important;
+}
+
 /* ==================== BUTTONS ==================== */
 .btn-color {
   color: var(--color-white) !important;
   background-color: var(--color-primary) !important;
   border: 1px solid var(--color-primary);
+  border-radius: 2px;
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 12px;
@@ -157,6 +171,10 @@ body {
   text-align: center;
   width: 10rem;
   font-family: var(--font-family-roboto);
+}
+
+#buyNowdesktop:hover {
+  background-color: transparent !important;
 }
 
 .btn-color:hover {
@@ -169,6 +187,7 @@ body {
 .btn-outline-color {
   background-color: transparent !important;
   border: 1px solid var(--color-primary);
+  border-radius: 2px;
   color: var(--color-primary) !important;
   font-family: var(--font-sans);
   font-weight: 500;
@@ -185,6 +204,11 @@ body {
   color: var(--color-white) !important;
 }
 
+#purchase-button {
+  width: 25%; 
+  max-width: 300px;
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 992px) {
   .hero-section {
@@ -194,6 +218,7 @@ body {
   .hero-title h1 { font-size: 36px; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { width: 100%; max-width: 300px; }
+
 }
 
 @media (max-width: 768px) {
@@ -213,8 +238,19 @@ body {
     font-size: 14px;
     padding: 0.75rem 1rem;
   }
+  #purchase-button {
+  width: 50%; 
+  max-width: 300px;
+}
 }
 
+@media screen and (max-width: 768px) {
+  #purchase-button {
+  width: 50%; 
+  max-width: 300px;
+  }
+  
+}
 /* ==================== Center feature icon on small/medium screens ==================== */
 @media (max-width: 991.98px) {
   .feature-section .d-flex.flex-column.align-items-start {
@@ -222,6 +258,7 @@ body {
     text-align: center; /* optional: also center text under the icon */
   }
 }
+
 /* ==================== FORCE HIDE COLLAPSE NAV ON LARGE SCREENS ==================== */
 @media (min-width: 992px) {
   #navbarContent {
