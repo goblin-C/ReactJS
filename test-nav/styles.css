@@ -52,12 +52,14 @@ body {
 .background {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%; /* center background horizontally */
   width: 100%;
+  max-width: 1440px; /* do not let it grow beyond 1440px */
   height: 100vh;
   background: url('../test/assets/hero-illustration.png') no-repeat center right;
   background-size: contain;
   z-index: -1;
+  transform: translateX(-50%);
 }
 
 /* ==================== NAVIGATION ==================== */
