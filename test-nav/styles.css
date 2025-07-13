@@ -1,12 +1,18 @@
+/* ==================== IMPORT GOOGLE FONT ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.body {
-    margin: 0;
-}
-* {
-    margin: 0;
+/* ==================== RESET & BASE ==================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+body {
+  scroll-behavior: smooth;
+  background-color: #FFFFFF;
+  height: 100vh;
+  margin: 0;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
+/* ==================== ROOT VARIABLES ==================== */
 :root {
   /* Colors */
   --color-primary: #111B47;
@@ -42,234 +48,188 @@
   --font-family-roboto: "Roboto", sans-serif;
 }
 
-/* Font Styles */
-.font-style-1 {
-  font-family: var(--font-family-roboto);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5em;
+/* ==================== BACKGROUND LAYER ==================== */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('../test/assets/hero-illustration.png') no-repeat center right;
+  background-size: contain;
+  z-index: -1;
 }
 
-.font-style-2 {
+/* ==================== NAVIGATION ==================== */
+.navbar {
   font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.625em;
-}
-
-.font-style-3 {
-  font-family: var(--font-family-roboto);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.625em;
-}
-
-.font-style-4 {
-  font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 1.333em;
-}
-
-.font-style-5 {
-  font-family: var(--font-family-roboto);
+  background-color: transparent !important;
+  padding: 15px 0;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.714em;
+  color: #505F98 !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-.font-style-6 {
-  font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.667em;
-}
-
-.font-style-7 {
+.navbar-brand {
   font-family: var(--font-family-roboto);
   font-weight: 900;
   font-size: 26px;
-  line-height: 1.462em;
+  color: var(--bg-secondary-color) !important;
+}
+.navbar.scrolled {
+  background-color: white !important;
 }
 
-.font-style-8 {
-  font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.5em;
-}
-
-.font-style-9 {
+.nav-link-style {
   font-family: var(--font-family-roboto);
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.667em;
+  font-size: 12px;
+  line-height: 1.5em;
+  color: var(--color-light-purple) !important;
 }
 
-.font-style-10 {
+/* ==================== HERO SECTION ==================== */
+.hero-section {
+  font-family: var(--font-family-roboto);
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.hero-content { 
+  font-family: var(--font-family-roboto);
+  margin-top: 6rem; 
+}
+
+.hero-title h1 {
   font-family: var(--font-family-roboto);
   font-weight: 500;
   font-size: 50px;
-  line-height: 1.32em;
+  color: #091133 !important;
 }
-
-.font-style-11 {
+.hero-description {
   font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.625em;
+  font-weight: 400;
+  font-size: 18px;
+  color: #505F98 !important;
 }
 
-.font-style-12 {
+.hero-buttons { 
+  margin-top: 2rem !important; 
   font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.714em;
 }
 
-.font-style-13 {
+/* ==================== FEATURE SECTION ==================== */
+.feature-section {
+  margin-top: 6rem;
+  font-family: var(--font-family-roboto);
+}
+
+.feature-description {
   font-family: var(--font-family-roboto);
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.625em;
+  color: var(--color-light-text) !important;
 }
-
-.font-style-14 {
-  font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 1.429em;
-}
-
-.font-style-15 {
-  font-family: var(--font-family-roboto);
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.455em;
-}
-
-.font-style-16 {
-  font-family: var(--font-family-roboto);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 2.4em;
-}
-
-.font-style-17 {
+.feature-section-description {
   font-family: var(--font-family-roboto);
   font-weight: 400;
-  font-size: 39.38px;
-  line-height: 1.455em;
+  font-size: 16px;
+  color: var(--color-light-purple) !important;
 }
 
-.font-style-18 {
-  font-family: var(--font-family-roboto);
-  font-weight: 700;
-  font-size: 32.22px;
-  line-height: 1.778em;
-}
-
-.font-style-19 {
-  font-family: var(--font-family-roboto);
-  font-weight: 700;
-  font-size: 71.6px;
-  line-height: 1.172em;
-}
-
-h1 {
-    margin: 0;
-}
-
-.nav {
-    position: sticky;
-    top: 0;
-    height: 60px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 5rem;
-}
-
-a,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-  color: var(--color-purple);
-}
-
-.links {
-    padding-left: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.brand {
-    display: flex;
-    justify-content: space-evenly; 
-    text-align: center;
-    width: 100%;
-    color: var(--color-secondary);
-}
-
-button {
-    width: 50%;
-}
-
-#buy-now {
-    color: var(--color-white);
-    background-color: var(--color-dark-blue);
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    padding-right: 120px;
-}
-
-.background {
-    position: relative;
-    width: 100%;
-}
-
-.background::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: url('../test-nav/hero-illustration.png') no-repeat right center;
-    background-size: contain;
-    height: 100lvh;
-}
-
-.hero-section {
-    position: relative;
-    z-index: -2;
-    overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 0;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100lvh;
-  width: 100%;
+/* ==================== BUTTONS ==================== */
+.btn-color {
+  color: var(--color-white) !important;
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
   text-align: center;
+  width: 10rem;
+  font-family: var(--font-family-roboto);
 }
 
-@media (max-width: 991px) {
-  .background::after {
-    display: none;
+.btn-color:hover {
+  background-color: var(--color-white) !important;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary);
+  font-family: var(--font-family-roboto);
+}
+
+.btn-outline-color {
+  background-color: transparent !important;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary) !important;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: center;
+  font-family: var(--font-family-roboto);
+}
+
+.btn-outline-color:hover {
+  background-color: var(--color-primary) !important;
+  font-family: var(--font-family-roboto);
+  color: var(--color-white) !important;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+  .hero-section {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .hero-title h1 { font-size: 36px; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; max-width: 300px; }
+}
+
+@media (max-width: 768px) {
+  .navbar { background-color: #fff !important; }
+  .navbar-collapse {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  .navbar-nav .nav-link { color: var(--primary-color) !important; }
+}
+
+@media (max-width: 575px) {
+  .navbar-brand { font-size: 20px; }
+  .hero-title h1 { font-size: 28px; }
+  .btn-color, .btn-outline-color {
+    font-size: 14px;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ==================== Center feature icon on small/medium screens ==================== */
+@media (max-width: 991.98px) {
+  .feature-section .d-flex.flex-column.align-items-start {
+    align-items: center !important;
+    text-align: center; /* optional: also center text under the icon */
+  }
+}
+/* ==================== FORCE HIDE COLLAPSE NAV ON LARGE SCREENS ==================== */
+@media (min-width: 992px) {
+  #navbarContent {
+    display: none !important;
+  }
+}
+
+/* ==================== HIDE BACKGROUND ON SMALL & MEDIUM SCREENS ==================== */
+@media (max-width: 991.98px) {
+  .background {
+    display: none !important;
   }
 }
