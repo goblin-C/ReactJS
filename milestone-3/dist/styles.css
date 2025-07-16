@@ -809,8 +809,16 @@ video {
   padding-bottom: 1rem;
 }
 
+.pl-10 {
+  padding-left: 2.5rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .pt-20 {
