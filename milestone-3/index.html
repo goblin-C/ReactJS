@@ -1,43 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Responsive To-Do List</title>
+    <link href="dist/styles.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="assets/logo.svg" alt="Logo">
-                <h1>To-Do List</h1>
-            </div>
-        </header>
-        <main>
-            <div class="task-header">
-                <div class="task-info">
-                    <h2>Today</h2>
-                    <p id="date"></p>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Fixed Header -->
+    <header class="bg-teal-700 text-white px-6 py-4 flex items-center fixed top-0 left-0 right-0 z-10">
+        <img src="../milestone-3/assets/logo.svg" alt="Logo" class="w-6 h-6 mr-3" />
+        <h1 class="font-semibold text-xl">To-Do List</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col pt-20"> <!-- pt-20 to offset fixed header -->
+        <div class="flex flex-col items-center justify-center w-full p-4">
+
+            <!-- Content wrapper with scroll -->
+            <div class="flex flex-col w-full max-w-[1280px] h-[calc(100vh-80px)]"> <!-- 80px header height -->
+                <!-- Top Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-4 px-2">
+                    <div>
+                        <h2 class="text-2xl font-semibold">Today</h2>
+                        <p id=current-date class="text-gray-500 text-base">March 4, 2010</p>
+                    </div>
+                    <button class="bg-teal-700 text-white px-4 py-2 rounded flex items-center text-base">
+                        Add New Task
+                        <span class="ml-2 text-xl">+</span>
+                    </button>
                 </div>
-                <button class="add-task-btn">Add New Task <img src="assets/plus.svg" alt=""></button>
-            </div>
-            <div class="task-list">
-            </div>
-        </main>
-    </div>
 
-    <div id="task-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <form id="task-form">
-                <input type="text" id="task-input" placeholder="Add new task.....">
-                <button type="submit" id="modal-submit-btn">Add Task</button>
-            </form>
+                <!-- Task list scrollable -->
+                <div class="flex-1 overflow-y-auto space-y-4 px-2 pb-4 mt-2">
+                    <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                        <div class="flex items-center flex-1 overflow-hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex-shrink-0"></span>
+                            <span class="truncate text-base">Do exercise</span>
+                        </div>
+                        <div class="flex items-center space-x-3 flex-shrink-0">
+                            <img src="../milestone-3/assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                            <img src="../milestone-3/assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                        <div class="flex items-center flex-1 overflow-hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex-shrink-0"></span>
+                            <span class="truncate text-base">15 min walk with your dog</span>
+                        </div>
+                        <div class="flex items-center space-x-3 flex-shrink-0">
+                            <img src="../milestone-3/assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                            <img src="../milestone-3/assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                        <div class="flex items-center flex-1 overflow-hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex-shrink-0"></span>
+                            <span class="truncate text-base">Buy Groceries</span>
+                        </div>
+                        <div class="flex items-center space-x-3 flex-shrink-0">
+                            <img src="../milestone-3/assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                            <img src="../milestone-3/assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                        <div class="flex items-center flex-1 overflow-hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex-shrink-0"></span>
+                            <span class="truncate text-base">Video Call your family</span>
+                        </div>
+                        <div class="flex items-center space-x-3 flex-shrink-0">
+                            <img src="../milestone-3/assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                            <img src="../milestone-3/assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="toast" class="toast"></div>
+    </main>
+    <script>
+        const dateElement = document.getElementById('current-date');
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = today.toLocaleDateString(undefined, options);
+    </script>
 </body>
+
 </html>
