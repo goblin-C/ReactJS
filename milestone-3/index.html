@@ -33,7 +33,7 @@
         </div>
     </main>
 
-    <!-- Toast -->
+    <!-- Add Toast -->
     <div id="toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-2 rounded hidden">Task added
         successfully!</div>
 
@@ -42,7 +42,8 @@
         const dateElement = document.getElementById('current-date');
         dateElement.textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
 
-        // Load tasks
+
+        // Load Tasks
         function loadTasks() {
             const list = document.getElementById('task-list');
             list.innerHTML = '';
@@ -52,37 +53,25 @@
                 const icon = task.checked ? 'checkbox-checked.svg' : 'checkbox-unchecked.svg';
                 const textClass = task.checked ? 'line-through text-gray-400' : '';
 
-                if (task.checked) {
-                    list.innerHTML += `
-            <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
-                <div class="flex items-center flex-1 overflow-hidden">
-                    <img onclick="toggleTask(${index})"
-                         src="assets/${icon}" 
-                         alt="Checkbox" 
-                         class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
-                    <span class="truncate text-base ${textClass}">${task.text}</span>
-                </div>
-            </div>`;
-                } else {
-                    list.innerHTML += `
-            <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
-                <div class="flex items-center flex-1 overflow-hidden">
-                    <img onclick="toggleTask(${index})"
-                         src="assets/${icon}" 
-                         alt="Checkbox" 
-                         class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
-                    <span class="truncate text-base ${textClass}">${task.text}</span>
-                </div>
-                <div class="flex items-center space-x-3 flex-shrink-0">
-                    <img src="assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
-                    <img onclick="deleteTask(${index})" src="assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
-                </div>
-            </div>`;
-                }
-
+                list.innerHTML += `
+                    <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                    <div class="flex items-center flex-1 overflow-hidden">
+                        <img onclick="toggleTask(${index})"
+                            src="assets/${icon}" 
+                            alt="Checkbox" 
+                            class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
+                        ${!task.checked 
+                        ? `<span onclick="editTask(${index})" class="truncate text-base cursor-pointer flex-1">${task.text}</span>` 
+                        : `<span class="truncate text-base ${textClass} flex-1">${task.text}</span>`}
+                    </div>
+                    ${!task.checked ? `
+                    <div class="flex items-center space-x-3 flex-shrink-0">
+                        <img onclick="editTask(${index})" src="assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                        <img onclick="deleteTask(${index})" src="assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                    </div>` : ''}
+                    </div>`;
             });
         }
-
 
         // Toggle checked
         function toggleTask(index) {
@@ -92,6 +81,10 @@
             loadTasks();
         }
 
+        // Edit task
+        function editTask(index) {
+            location.href = `edit_task.html?id=${index}`;
+        }
         // Delete task
         function deleteTask(index) {
             const tasks = JSON.parse(localStorage.getItem('tasks')) || [];

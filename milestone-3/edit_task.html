@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Task</title>
+  <link href="dist/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+<header class="bg-teal-700 text-white px-6 py-4 flex items-center fixed top-0 left-0 right-0 z-10">
+  <img src="assets/logo.svg" alt="Logo" class="w-6 h-6 mr-3" />
+  <h1 class="font-semibold text-xl">To-Do List</h1>
+</header>
+
+<main class="flex-1 flex flex-col pt-20">
+  <div class="flex-1 flex flex-col justify-center w-full max-w-[1280px] mx-auto p-4">
+
+    <!-- Row: Today + close -->
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h2 class="text-2xl font-semibold">Today</h2>
+        <p id="current-date" class="text-gray-500 text-base"></p>
+      </div>
+      <button onclick="location.href='index.html'" class="text-3xl font-light">×</button>
+    </div>
+
+    <!-- Input field -->
+    <input id="task-input" type="text" placeholder="Edit task..." maxlength="30"
+      class="border-l-4 border-gray-400 focus:outline-none text-3xl placeholder-gray-400 mb-2 w-full ml-2 mr-2 pl-4" />
+
+    <p id="char-count" class="text-gray-500 text-sm mt-1 ml-2 hidden">30 characters remaining</p>
+
+    <!-- Save button -->
+    <div class="flex justify-center mt-auto">
+      <button onclick="saveTask()" class="bg-teal-700 text-white py-2 px-8 rounded w-full max-w-xs">Save Changes</button>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  document.getElementById('current-date').textContent =
+    new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  const params = new URLSearchParams(location.search);
+  const taskId = params.get('id');
+  const input = document.getElementById('task-input');
+  const count = document.getElementById('char-count');
+  const max = 30;
+
+  // load task value
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  if (taskId !== null && tasks[taskId]) {
+    input.value = tasks[taskId].text;
+    const remaining = max - input.value.length;
+    count.textContent = `${remaining} characters remaining`;
+    count.classList.remove('hidden');
+  }
+
+  // live char count
+  input.addEventListener('input', () => {
+    const remaining = max - input.value.length;
+    count.textContent = `${remaining} characters remaining`;
+    if (input.value.length > 0) {
+      count.classList.remove('hidden');
+    } else {
+      count.classList.add('hidden');
+    }
+  });
+
+  function saveTask() {
+    if (input.value.trim()) {
+      tasks[taskId].text = input.value.trim();
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem('toast', '1'); // show toast
+      location.href = 'index.html';
+    }
+  }
+</script>
+</body>
+</html>
