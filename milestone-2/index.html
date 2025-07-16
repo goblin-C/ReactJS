@@ -97,7 +97,7 @@
       </div>
     </header>
 
-    <!-- Sidebar + Main Layout -->
+    <!-- Layout -->
     <div class="flex pt-[102px] h-screen overflow-hidden">
       <!-- Mobile overlay -->
       <div
@@ -127,22 +127,20 @@
           </div>
         </div>
 
-        <!-- Menu -->
-        <nav class="pr-3 py-4 space-y-1 text-md">
+        <nav
+          class="pr-3 py-4 space-y-1.5 md:space-y-2 text-[15px] md:text-[18px]"
+        >
           <!-- Active: Dashboard -->
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md bg-[#f4f2ff] dark:bg-indigo-500/10 text-[#633CFF] dark:text-indigo-400 font-medium relative"
+            class="flex items-center space-x-3 px-3 py-2 md:py-3 rounded-md bg-[#f4f2ff] dark:bg-indigo-500/10 text-[#633CFF] dark:text-indigo-400 font-medium relative"
           >
-            <!-- Left indicator -->
             <span
               class="absolute left-0 top-0 h-full w-1 bg-[#633CFF] rounded-r"
             ></span>
-
-            <!-- Dashboard SVG Icon -->
             <img
               src="assets/dashboard.svg"
-              class="w-5 h-5 filter dark"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark"
               alt="Dashboard Icon"
             />
             <span>Dashboard</span>
@@ -150,67 +148,83 @@
 
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <img src="assets/finance.svg" class="w-5 h-5 filter dark:invert" />
+            <img
+              src="assets/finance.svg"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
+            />
             <span>Finance</span>
           </a>
 
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <img
               src="assets/employees.svg"
-              class="w-5 h-5 filter dark:invert"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
             />
             <span>Employees</span>
           </a>
 
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <img src="assets/company.svg" class="w-5 h-5 filter dark:invert" />
+            <img
+              src="assets/company.svg"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
+            />
             <span>Company</span>
           </a>
 
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <img
               src="assets/candidate.svg"
-              class="w-5 h-5 filter dark:invert"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
             />
             <span>Candidate</span>
           </a>
 
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <img src="assets/calender.svg" class="w-5 h-5 filter dark:invert" />
+            <img
+              src="assets/calender.svg"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
+            />
             <span>Calendar</span>
           </a>
 
           <!-- Separator -->
           <div class="border-t border-gray-200 dark:border-gray-700 my-3"></div>
 
-          <!-- Profile & Settings -->
+          <!-- Profile -->
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <img src="assets/profile.svg" class="w-5 h-5 filter dark:invert" />
+            <img
+              src="assets/profile.svg"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
+            />
             <span>Profile</span>
           </a>
 
+          <!-- Settings -->
           <a
             href="#"
-            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center space-x-3 pl-5 md:pl-6 py-2 md:py-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <img src="assets/settings.svg" class="w-5 h-5 filter dark:invert" />
+            <img
+              src="assets/settings.svg"
+              class="w-5 h-5 md:w-6 md:h-6 filter dark:invert"
+            />
             <span>Setting</span>
           </a>
         </nav>
