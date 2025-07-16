@@ -4,41 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Milestone - 2: Dashboard</title>
+
+    <!-- Fonts and Tailwind CSS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="dist/styles.css" />
   </head>
+
   <body
     class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 overflow-hidden"
   >
     <!-- Fixed Header -->
     <header
-      class="fixed top-0 left-0 w-full h-16 bg-white dark:bg-gray-800 shadow z-50 flex items-center justify-between px-4 md:px-6"
+      class="fixed top-0 left-0 w-full h-[100px] bg-white dark:bg-gray-800 z-50 flex items-center justify-between px-4 md:px-6 shadow-[0_2px_0_0_rgba(0,0,0,0.05)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.1)]"
     >
-      <!-- Logo -->
-      <div class="flex items-center space-x-2">
-        <img src="assets/logo.svg" alt="Logo" class="h-6 w-6" />
-        <span
-          class="font-sans font-normal text-[27.39px] leading-[100%] tracking-[1%] dark:text-white"
+      <!-- Left: Logo + Hamburger -->
+      <div class="flex items-center space-x-4">
+        <!-- Hamburger (mobile only) -->
+        <button
+          id="menuToggle"
+          class="block md:hidden p-2 rounded bg-gray-100 dark:bg-gray-700"
         >
-          Circle Soft
-        </span>
+          <svg
+            class="w-6 h-6 text-gray-700 dark:text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo.svg" alt="Logo" class="h-6 w-6" />
+          <span
+            class="font-sans font-normal text-[27.39px] leading-[100%] tracking-[1%] dark:text-white"
+          >
+            Circle Soft
+          </span>
+        </div>
       </div>
 
-      <!-- Search Bar -->
+      <!-- Center: Search Bar -->
       <div class="flex-1 mx-4 hidden md:block">
         <input
           type="text"
           placeholder="Search..."
-          class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-64 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
-      <!-- Icons -->
+      <!-- Right: Theme + Bell -->
       <div class="flex items-center space-x-4">
-        <!-- Dark Mode Toggle -->
         <button
           id="themeToggle"
           class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full"
@@ -51,7 +76,6 @@
           />
         </button>
 
-        <!-- Notification Bell -->
         <button class="relative bg-gray-100 dark:bg-gray-700 p-2 rounded-full">
           <svg
             class="w-5 h-5 text-gray-700 dark:text-gray-200"
@@ -73,12 +97,141 @@
       </div>
     </header>
 
-    <!-- Theme Script -->
+    <!-- Sidebar + Main Layout -->
+    <div class="flex pt-[102px] h-screen overflow-hidden">
+      <!-- Mobile overlay -->
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"
+      ></div>
+
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="fixed top-[102px] left-0 w-60 h-[calc(100vh-102px)] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 z-50 transform -translate-x-full md:translate-x-0 md:static md:block transition-transform duration-200 ease-in-out shadow-lg md:shadow-none"
+      >
+        <!-- User Info -->
+        <div
+          class="flex items-center px-4 py-3 space-x-4 border-b border-gray-200 dark:border-gray-700"
+        >
+          <img
+            src="assets/user.png"
+            alt="User"
+            class="w-10 h-10 rounded-full"
+          />
+          <div>
+            <div class="font-medium text-gray-900 dark:text-white">Gavano</div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+              HR Manager
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <nav class="pr-3 py-4 space-y-1 text-md">
+          <!-- Active: Dashboard -->
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md bg-[#f4f2ff] dark:bg-indigo-500/10 text-[#633CFF] dark:text-indigo-400 font-medium relative"
+          >
+            <!-- Left indicator -->
+            <span
+              class="absolute left-0 top-0 h-full w-1 bg-[#633CFF] rounded-r"
+            ></span>
+
+            <!-- Dashboard SVG Icon -->
+            <img
+              src="assets/dashboard.svg"
+              class="w-5 h-5 filter dark"
+              alt="Dashboard Icon"
+            />
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img src="assets/finance.svg" class="w-5 h-5 filter dark:invert" />
+            <span>Finance</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img
+              src="assets/employees.svg"
+              class="w-5 h-5 filter dark:invert"
+            />
+            <span>Employees</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img src="assets/company.svg" class="w-5 h-5 filter dark:invert" />
+            <span>Company</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img
+              src="assets/candidate.svg"
+              class="w-5 h-5 filter dark:invert"
+            />
+            <span>Candidate</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img src="assets/calender.svg" class="w-5 h-5 filter dark:invert" />
+            <span>Calendar</span>
+          </a>
+
+          <!-- Separator -->
+          <div class="border-t border-gray-200 dark:border-gray-700 my-3"></div>
+
+          <!-- Profile & Settings -->
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img src="assets/profile.svg" class="w-5 h-5 filter dark:invert" />
+            <span>Profile</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center space-x-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img src="assets/settings.svg" class="w-5 h-5 filter dark:invert" />
+            <span>Setting</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-gray-50 dark:bg-gray-900 p-6 overflow-auto">
+        <h1 class="text-xl font-semibold mb-4">Dashboard Content</h1>
+        <!-- Future content like stats, charts, etc. -->
+      </main>
+    </div>
+
+    <!-- Scripts -->
     <script>
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
 
-      // Load theme from local storage
+      // Theme switch
       if (localStorage.getItem("theme") === "dark") {
         document.documentElement.classList.add("dark");
         themeIcon.src = "assets/theme-dark.svg";
@@ -90,6 +243,17 @@
           ? "assets/theme-dark.svg"
           : "assets/theme-light.svg";
         localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+
+      // Sidebar toggle for mobile
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
       });
     </script>
   </body>
