@@ -53,7 +53,7 @@
                 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
                 tasks.push({ text: input.value.trim(), checked: false });
                 localStorage.setItem('tasks', JSON.stringify(tasks));
-                localStorage.setItem('toast', '1'); // show toast after redirect
+                localStorage.setItem('toast', 'Task added successfully!');
                 location.href = 'index.html';
             }
         }

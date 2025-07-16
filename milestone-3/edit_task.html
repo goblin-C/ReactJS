@@ -73,7 +73,7 @@
     if (input.value.trim()) {
       tasks[taskId].text = input.value.trim();
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      localStorage.setItem('toast', '1'); // show toast
+      localStorage.setItem('toast', 'Task edited successfully!');
       location.href = 'index.html';
     }
   }
