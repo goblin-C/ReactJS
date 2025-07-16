@@ -47,20 +47,42 @@
             const list = document.getElementById('task-list');
             list.innerHTML = '';
             const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
             tasks.forEach((task, index) => {
-                list.innerHTML += `
-        <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
-          <div class="flex items-center flex-1 overflow-hidden">
-            <img onclick="toggleTask(${index})" src="assets/${task.checked ? 'checkbox-checked.svg' : 'checkbox.svg'}" alt="Checkbox" class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
-            <span class="truncate text-base ${task.checked ? 'line-through text-gray-400' : ''}">${task.text}</span>
-          </div>
-          <div class="flex items-center space-x-3 flex-shrink-0">
-            <img src="assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
-            <img onclick="deleteTask(${index})" src="assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
-          </div>
-        </div>`;
+                const icon = task.checked ? 'checkbox-checked.svg' : 'checkbox-unchecked.svg';
+                const textClass = task.checked ? 'line-through text-gray-400' : '';
+
+                if (task.checked) {
+                    list.innerHTML += `
+            <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                <div class="flex items-center flex-1 overflow-hidden">
+                    <img onclick="toggleTask(${index})"
+                         src="assets/${icon}" 
+                         alt="Checkbox" 
+                         class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
+                    <span class="truncate text-base ${textClass}">${task.text}</span>
+                </div>
+            </div>`;
+                } else {
+                    list.innerHTML += `
+            <div class="bg-gray-100 rounded flex justify-between items-center px-4 py-3">
+                <div class="flex items-center flex-1 overflow-hidden">
+                    <img onclick="toggleTask(${index})"
+                         src="assets/${icon}" 
+                         alt="Checkbox" 
+                         class="w-5 h-5 mr-3 cursor-pointer flex-shrink-0">
+                    <span class="truncate text-base ${textClass}">${task.text}</span>
+                </div>
+                <div class="flex items-center space-x-3 flex-shrink-0">
+                    <img src="assets/edit.svg" alt="Edit" class="w-4 h-4 cursor-pointer">
+                    <img onclick="deleteTask(${index})" src="assets/delete.svg" alt="Delete" class="w-4 h-4 cursor-pointer">
+                </div>
+            </div>`;
+                }
+
             });
         }
+
 
         // Toggle checked
         function toggleTask(index) {
