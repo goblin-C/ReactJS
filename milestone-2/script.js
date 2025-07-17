@@ -57,15 +57,15 @@ if (ctx) {
             labels: months,
             datasets: [
                 {
-                    label: 'Job Applied',
+                    label: 'Job View',
                     data: viewed,
-                    backgroundColor: chartColors.applied,
+                    backgroundColor: chartColors.viewed,
                     borderRadius: 10,
                 },
                 {
-                    label: 'Job View',
+                    label: 'Job Applied',
                     data: applied,
-                    backgroundColor: chartColors.viewed,
+                    backgroundColor: chartColors.applied,
                     borderRadius: 10,
                 }
             ]
@@ -73,12 +73,7 @@ if (ctx) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: {
-                padding: {
-                    top: 10,
-                    bottom: 10,
-                }
-            },
+            layout: { padding: { top: 10, bottom: 10 } },
             scales: {
                 x: {
                     stacked: true,
@@ -89,77 +84,40 @@ if (ctx) {
                     stacked: true,
                     min: 0,
                     max: 100,
-                    ticks: {
-                        stepSize: 20,
-                        color: chartColors.text
-                    },
-                    grid: {
-                        color: chartColors.grid,
-                        drawBorder: false
-                    }
+                    ticks: { stepSize: 20, color: chartColors.text },
+                    grid: { color: chartColors.grid, drawBorder: false }
                 }
             },
             plugins: {
                 legend: {
-                    position: 'top',
-                    labels: {
-                        color: chartColors.text,
-                        boxWidth: 12,
-                        padding: 16,
-                        font: { size: 12 }
-                    }
+                    display: false
                 },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false
-                }
+                tooltip: { mode: 'index', intersect: false }
             }
         }
     };
 
+
     const jobChart = new Chart(ctx, chartConfig);
 
-    const donutCtx = document.getElementById('donutChart')?.getContext('2d');
 
-if (donutCtx) {
-  const isDark = document.documentElement.classList.contains('dark');
-  const donutChart = new Chart(donutCtx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Female', 'Male'],
-      datasets: [{
-        data: [35, 65],
-        backgroundColor: isDark
-          ? ['#8b5cf6', '#10b981']
-          : ['#7c3aed', '#059669'],
-        borderWidth: 0,
-      }]
-    },
-    options: {
-      cutout: '70%',
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => `${ctx.label}: ${ctx.raw}%`
-          }
-        }
-      }
+    function updateCustomLegendColors(isDark) {
+        const colors = getChartColors(isDark);
+        document.querySelector('[data-legend="view"]').style.backgroundColor = colors.viewed;
+        document.querySelector('[data-legend="applied"]').style.backgroundColor = colors.applied;
     }
-  });
-}
-
 
     function updateChartTheme(isDark) {
         const colors = getChartColors(isDark);
-        chartConfig.data.datasets[0].backgroundColor = colors.applied; // Applied
-        chartConfig.data.datasets[1].backgroundColor = colors.viewed;  // View
+        chartConfig.data.datasets[0].backgroundColor = colors.viewed;   // first dataset: views
+        chartConfig.data.datasets[1].backgroundColor = colors.applied;  // second dataset: applied
         chartConfig.options.scales.x.ticks.color = colors.text;
         chartConfig.options.scales.y.ticks.color = colors.text;
         chartConfig.options.scales.y.grid.color = colors.grid;
         chartConfig.options.plugins.legend.labels.color = colors.text;
         jobChart.update();
     }
+
 
     const filter = document.getElementById('monthFilter');
     filter?.addEventListener('change', () => {
@@ -175,22 +133,86 @@ if (donutCtx) {
 
     function updateVisibleBars() {
         const width = window.innerWidth;
+        const now = new Date();
+        const currentMonthIndex = now.getMonth();
+
         if (width < 640) {
-            updateChartData(9, 3);
+            // show last 3 months that exist
+            const start = Math.max(currentMonthIndex - 2, 0);
+            const count = currentMonthIndex - start + 1;
+            updateChartData(start, count);
         } else if (width < 1024) {
-            updateChartData(6, 6);
+            // show last 6 months that exist
+            const start = Math.max(currentMonthIndex - 5, 0);
+            const count = currentMonthIndex - start + 1;
+            updateChartData(start, count);
         } else {
-            updateChartData(0, 12);
+            // show from Jan to current month
+            updateChartData(0, currentMonthIndex + 1);
         }
     }
 
+
     function updateChartData(start, count) {
         jobChart.data.labels = months.slice(start, start + count);
-        jobChart.data.datasets[0].data = applied.slice(start, start + count);  // corrected
-        jobChart.data.datasets[1].data = viewed.slice(start, start + count);   // corrected
+        jobChart.data.datasets[0].data = viewed.slice(start, start + count);
+        jobChart.data.datasets[1].data = applied.slice(start, start + count);
         jobChart.update();
     }
+
 
     window.addEventListener('resize', updateVisibleBars);
     updateVisibleBars();
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const femaleTarget = 35;
+    const maleTarget = 65;
+
+    const hoverLabel = document.getElementById('hoverLabel');
+    const hoverIcon = document.getElementById('hoverIcon');
+    const hoverText = document.getElementById('hoverText');
+
+    const ctx = document.getElementById('employeeCompositionChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [maleTarget, femaleTarget],
+                backgroundColor: ['#059669', '#7c3aed'],
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '65%',
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false } // disable default tooltip
+            },
+            onHover: (event, elements, chart) => {
+                if (elements.length > 0) {
+                    const index = elements[0].index;
+                    const value = chart.data.datasets[0].data[index];
+
+                    hoverText.textContent = value + "%";
+                    hoverIcon.src = index === 0 ? 'assets/male-icon.svg' : 'assets/female-icon.svg';
+                    hoverIcon.alt = index === 0 ? "Male" : "Female";
+
+                    const canvasRect = chart.canvas.getBoundingClientRect();
+                    // position next to cursor
+                    hoverLabel.style.left = (event.clientX - canvasRect.left + 10) + 'px';
+                    hoverLabel.style.top = (event.clientY - canvasRect.top - 10) + 'px';
+
+                    hoverLabel.classList.remove('hidden');
+                } else {
+                    hoverLabel.classList.add('hidden');
+                }
+            }
+        }
+    });
+});
+
