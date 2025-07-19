@@ -1,5 +1,6 @@
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+import ProductTable from '../components/ProductTable';
 
 const Dashboard = () => {
   return (
@@ -7,8 +8,8 @@ const Dashboard = () => {
       <Sidebar />
       <div className="flex flex-col flex-1">
         <Header />
-        <main className="flex-1 p-4">
-          <h2 className="text-2xl font-semibold mb-4">Dashboard</h2>
+        <main className="flex-1 py-0 px-8 bg-white">
+          <ProductTable />
         </main>
       </div>
     </div>
