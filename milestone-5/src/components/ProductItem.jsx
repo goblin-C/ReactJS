@@ -11,16 +11,16 @@ export default function ProductItem({ product, isSelected, onSelect }) {
           className="w-12 h-12 object-cover"
         />
       </td>
-      <td className="p-2 truncate max-w-[200px]">{product.title}</td>
-<td className="p-2 max-w-[200px] relative group">
-  <div className="truncate">{product.description}</div>
-  
-  {/* Tooltip shown on hover */}
-  <div className="absolute left-0 top-full mt-1 w-max max-w-sm bg-gray-800 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
-    {product.description}
-  </div>
-</td>
-      <td className="p-2 text-center">${product.price}</td>
+      <td className="p-2 max-w-[200px] text-[#252C32] font-inter font-normal text-sm">{product.title}</td>
+      <td className="p-2 max-w-[200px] relative group text-[#252C32] font-inter font-normal text-sm">
+        <div className="truncate">{product.description}</div>
+
+        {/* Tooltip shown on hover */}
+        <div className="absolute left-0 top-full mt-1 w-max max-w-sm bg-gray-800 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+          {product.description}
+        </div>
+      </td>
+      <td className="p-2 text-center text-[#252C32] font-inter font-normal text-sm">${product.price}</td>
       <td className="p-2">
         <div className="flex gap-4 items-center justify-center">
           <button>

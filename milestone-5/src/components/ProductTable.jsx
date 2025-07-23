@@ -139,11 +139,11 @@ useEffect(() => {
                     onChange={handleSelectAll}
                   />
                 </th>
-                <th className="p-2 text-left">Image</th>
-                <th className="p-2 text-left">Title</th>
-                <th className="p-2 text-left">Description</th>
-                <th className="p-2 text-center">Price</th>
-                <th className="p-2 text-center ">Actions</th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">Image</th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">TITLE</th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">DESCRIPTION</th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">PRICE</th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">ACTIONS</th>
               </tr>
             </thead>
             <tbody>
@@ -158,7 +158,7 @@ useEffect(() => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="text-center p-4">
+                  <td colSpan="6" className="text-center p-2 text-[#84919A] font-inter font-semibold text-xs uppercase4">
                     No products available
                   </td>
                 </tr>

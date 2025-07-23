@@ -729,6 +729,10 @@ video {
   max-width: 24rem;
 }
 
+.max-w-\[400px\] {
+  max-width: 400px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1019,6 +1023,10 @@ video {
   font-weight: 600;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
@@ -1052,6 +1060,16 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#84919A\] {
+  --tw-text-opacity: 1;
+  color: rgb(132 145 154 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#252C32\] {
+  --tw-text-opacity: 1;
+  color: rgb(37 44 50 / var(--tw-text-opacity, 1));
 }
 
 .opacity-0 {
