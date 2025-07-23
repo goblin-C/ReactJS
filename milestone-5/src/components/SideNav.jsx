@@ -5,12 +5,12 @@ export default function SideNav() {
 
   return (
     <aside className="w-60 bg-gray-50 border-r h-screen flex flex-col">
-      <div className="pl-6 pr-4 py-4 font-bold text-gray-800">FakeApp</div>
+      <div className="pl-6 pr-4 py-4 font-inter font-semibold text-lg text-gray-800">FakeApp</div>
 
       <nav className="flex-1 overflow-y-auto flex flex-col justify-between">
-        <ul className="space-y-2 text-sm text-gray-700">
+        <ul className="space-y-1 font-inter font-normal text-sm text-gray-700">
           {/* Top group */}
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             {/* Home icon */}
             <svg
               className="w-4 h-4"
@@ -55,29 +55,29 @@ export default function SideNav() {
 
           {openProducts && (
             <ul className="space-y-1">
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 Reviews
               </li>
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 Disputes
               </li>
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 Top-ups
               </li>
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 Check deposits
               </li>
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 Payouts
               </li>
-              <li className="px-12 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
+              <li className="px-12 py-1 text-gray-700 cursor-pointer hover:bg-gray-100 rounded">
                 All transactions
               </li>
             </ul>
           )}
 
           {/* Remaining top items */}
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="16"
@@ -93,7 +93,7 @@ export default function SideNav() {
             </svg>
             Balances
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="16"
@@ -111,7 +111,7 @@ export default function SideNav() {
             </svg>
             Payments
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="12"
@@ -133,7 +133,7 @@ export default function SideNav() {
             </svg>
             Connected accounts
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="14"
@@ -149,7 +149,7 @@ export default function SideNav() {
             </svg>
             Products
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="16"
@@ -171,7 +171,7 @@ export default function SideNav() {
             </svg>
             Readers
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="12"
@@ -189,7 +189,7 @@ export default function SideNav() {
             </svg>
             Reports
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               width="24"
               height="24"
@@ -213,8 +213,8 @@ export default function SideNav() {
         </ul>
 
         {/* Bottom group */}
-        <ul className="space-y-1 text-sm text-gray-700 mb-4">
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+        <ul className="space-y-1 font-inter font-normal text-sm text-gray-700 mb-4">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-5 h-5"
               width="24"
@@ -232,7 +232,7 @@ export default function SideNav() {
             </svg>
             Developers
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               width="24"
               height="24"
@@ -253,7 +253,7 @@ export default function SideNav() {
             </svg>
             View test data
           </li>
-          <li className="flex items-center gap-2 px-6 py-2 hover:bg-gray-100 rounded cursor-pointer">
+          <li className="flex items-center gap-2 px-6 py-1 hover:bg-gray-100 rounded cursor-pointer">
             <svg
               className="w-4 h-4"
               width="16"

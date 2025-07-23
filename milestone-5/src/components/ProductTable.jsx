@@ -1,15 +1,46 @@
-import { useState } from 'react';
-import ProductItem from './ProductItem';
+import { useState, useEffect } from "react";
+import ProductItem from "./ProductItem";
+import { getProducts, totalProducts } from "../services/productService";
 
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalCount, setTotalCount] = useState(0);
+  const [count, setTotalCount] = useState(1);
   const [loading, setLoading] = useState(false);
   const limit = 10;
 
-  const totalPages = Math.ceil(totalCount / limit);
+useEffect(() => {
+  const fetchTotalCount = async () => {
+    setLoading(true);
+    try {
+      const response = await totalProducts();
+      setTotalCount(response.data.length);
+    } catch (err) {
+      console.error('Failed to fetch total count:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchTotalCount();
+}, [])
+
+useEffect(() => {
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const offset = (currentPage - 1) * limit;
+      const response = await getProducts(offset, limit);
+      setProducts(response.data); 
+    } catch (err) {
+      console.error('Failed to fetch products:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData();
+}, [currentPage]);
 
   const handleSelectAll = (e) => {
     if (e.target.checked) {
@@ -26,14 +57,15 @@ export default function ProductTable() {
     );
   };
 
-  const isAllSelected = products.length > 0 && selectedIds.length === products.length;
+  const isAllSelected =
+    products.length > 0 && selectedIds.length === products.length;
 
   return (
     <div className="flex flex-col flex-1 px-8 pt-2 overflow-hidden">
       <div className="flex justify-between items-center p-2 mt-5 mb-2 border-b bg-white">
-        <h1 className="text-4xl font-semibold text-gray-900">Products</h1>
+        <h1 className="text-4xl font-bold">Products</h1>
         <div className="flex gap-4 items-center">
-          <button className="relative flex items-center gap-2 border px-3 py-1 rounded-md text-gray-700">
+          <button className="relative flex items-center gap-2 border px-4 py-1 rounded-md font-inter font-normal text-sm text-gray-700">
             {/* Filter SVG */}
             <svg
               width="14"
@@ -51,7 +83,7 @@ export default function ProductTable() {
             </svg>
             Filter
           </button>
-          <button className="flex items-center border gap-2 px-3 py-1 rounded-md text-gray-700">
+          <button className="flex items-center border gap-2 px-4 py-1 rounded-md font-inter font-normal text-sm text-gray-700">
             {/* Export SVG */}
             <svg
               width="14"
@@ -69,7 +101,7 @@ export default function ProductTable() {
             </svg>
             Export
           </button>
-          <button className="flex items-center bg-blue-500 gap-1 text-white px-3 py-1 rounded-md">
+          <button className="flex items-center bg-blue-500 gap-1 text-white px-3 py-1 font-inter font-normal text-sm rounded-md">
             {/* Plus SVG */}
             <svg
               width="24"
@@ -93,7 +125,9 @@ export default function ProductTable() {
       {/* Scrollable table container */}
       <div className="flex-1 overflow-y-auto">
         {loading ? (
-          <div className="flex justify-center items-center h-full">Loading...</div>
+          <div className="flex justify-center items-center h-full">
+            Loading...
+          </div>
         ) : (
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-white border-b">
@@ -132,15 +166,6 @@ export default function ProductTable() {
             </tbody>
           </table>
         )}
-      </div>
-
-      {/* Pagination */}
-      <div className="shrink-0">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
       </div>
     </div>
   );
