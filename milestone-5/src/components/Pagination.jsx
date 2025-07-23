@@ -10,7 +10,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       {/* Previous and Next controls in a separate div */}
       <div className="flex justify-between items-center">
         <button
-          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
+          onClick={() => onPageChange(Math.max(currentPage, 1))}
           disabled={currentPage === 1}
           className="flex items-center border px-3 py-1 rounded text-sm text-gray-700 disabled:opacity-50"
         >
