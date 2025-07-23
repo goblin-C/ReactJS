@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../services/productService";
-import ProductItem from "./ProductItem";
-import Pagination from "./Pagination";
-import axios from "axios";
+import { useState } from 'react';
+import ProductItem from './ProductItem';
 
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
@@ -31,21 +28,6 @@ export default function ProductTable() {
 
   const isAllSelected = products.length > 0 && selectedIds.length === products.length;
 
-  useEffect(() => {
-    const offset = (currentPage - 1) * limit;
-    setLoading(true);
-    getProducts(offset, limit)
-      .then((res) => setProducts(res.data))
-      .finally(() => setLoading(false));
-  }, [currentPage]);
-
-  useEffect(() => {
-    axios
-      .get("https://api.escuelajs.co/api/v1/products")
-      .then((res) => setTotalCount(res.data.length))
-      .catch((err) => console.error(err));
-  }, []);
-
   return (
     <div className="flex flex-col flex-1 px-8 pt-2 overflow-hidden">
       <div className="flex justify-between items-center p-2 mt-5 mb-2 border-b bg-white">
@@ -68,10 +50,6 @@ export default function ProductTable() {
               />
             </svg>
             Filter
-            {/* Notification badge */}
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-              1
-            </span>
           </button>
           <button className="flex items-center border gap-2 px-3 py-1 rounded-md text-gray-700">
             {/* Export SVG */}
