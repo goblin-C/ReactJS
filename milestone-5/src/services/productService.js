@@ -7,3 +7,6 @@ export const getProducts = (offset = 0, limit = 10) =>
 
 export const totalProducts = () =>
   axios.get(`${API_URL}`);
+
+export const deleteProduct = (id) =>
+  axios.delete(`${API_URL}/${id}`);

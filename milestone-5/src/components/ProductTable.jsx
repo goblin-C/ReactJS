@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import ProductItem from "./ProductItem";
-import { getProducts, totalProducts } from "../services/productService";
+import Toast from "./Toast";
+import Modal from "./Modal";
+import {
+  getProducts,
+  totalProducts,
+  deleteProduct,
+} from "../services/productService";
 
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
@@ -8,9 +14,12 @@ export default function ProductTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+  const [toastMessage, setToastMessage] = useState(null);
   const limit = 10;
 
-  // Fetch total product count once
+  // Fetch total product count
   useEffect(() => {
     const fetchTotalCount = async () => {
       try {
@@ -23,7 +32,7 @@ export default function ProductTable() {
     fetchTotalCount();
   }, []);
 
-  // Fetch paginated products on page change
+  // Fetch paginated products
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -40,6 +49,14 @@ export default function ProductTable() {
     fetchData();
   }, [currentPage]);
 
+  // Auto-dismiss toast after 3 seconds
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => setToastMessage(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMessage]);
+
   const handleSelectAll = (e) => {
     if (e.target.checked) {
       const allIds = products.map((p) => p.id);
@@ -55,7 +72,29 @@ export default function ProductTable() {
     );
   };
 
-  const isAllSelected = products.length > 0 && selectedIds.length === products.length;
+  const handleDeleteClick = (product) => {
+    setProductToDelete(product);
+    setShowModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!productToDelete) return;
+
+    try {
+      await deleteProduct(productToDelete.id);
+      setProducts((prev) => prev.filter((p) => p.id !== productToDelete.id));
+      setToastMessage("Product deleted successfully");
+    } catch (err) {
+      console.error("Delete failed:", err.response?.data || err.message);
+      setToastMessage("Failed to delete product");
+    } finally {
+      setShowModal(false);
+      setProductToDelete(null);
+    }
+  };
+
+  const isAllSelected =
+    products.length > 0 && selectedIds.length === products.length;
 
   return (
     <div className="flex flex-col flex-1 px-8 pt-2 overflow-hidden">
@@ -63,9 +102,8 @@ export default function ProductTable() {
       <div className="flex justify-between items-center p-2 mt-5 mb-2 border-b bg-white">
         <h1 className="text-4xl font-bold">Products</h1>
         <div className="flex gap-4 items-center">
-          {/* Filter Button */}
           <button className="flex items-center gap-2 border px-4 py-1 rounded-md font-inter text-sm text-gray-700">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -76,9 +114,8 @@ export default function ProductTable() {
             Filter
           </button>
 
-          {/* Export Button */}
           <button className="flex items-center gap-2 border px-4 py-1 rounded-md font-inter text-sm text-gray-700">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -89,9 +126,8 @@ export default function ProductTable() {
             Export
           </button>
 
-          {/* Add Product */}
           <button className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1 text-sm font-inter rounded-md">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="24" height="24" fill="none">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -107,19 +143,35 @@ export default function ProductTable() {
       {/* Table */}
       <div className="flex-1 overflow-y-auto">
         {loading ? (
-          <div className="flex justify-center items-center h-full">Loading...</div>
+          <div className="flex justify-center items-center h-full">
+            Loading...
+          </div>
         ) : (
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-white border-b">
               <tr>
                 <th className="p-2 text-left">
-                  <input type="checkbox" checked={isAllSelected} onChange={handleSelectAll} />
+                  <input
+                    type="checkbox"
+                    checked={isAllSelected}
+                    onChange={handleSelectAll}
+                  />
                 </th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">Image</th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">Title</th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">Description</th>
-                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">Price</th>
-                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">Actions</th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Image
+                </th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Title
+                </th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Description
+                </th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Price
+                </th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -130,11 +182,15 @@ export default function ProductTable() {
                     product={product}
                     isSelected={selectedIds.includes(product.id)}
                     onSelect={() => handleSelectOne(product.id)}
+                    onDelete={handleDeleteClick}
                   />
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="text-center p-2 text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  <td
+                    colSpan="6"
+                    className="text-center p-2 text-[#84919A] font-inter font-semibold text-xs uppercase"
+                  >
                     No products available
                   </td>
                 </tr>
@@ -143,6 +199,21 @@ export default function ProductTable() {
           </table>
         )}
       </div>
+
+      {/* Modal + Toast */}
+      <Modal
+        visible={showModal}
+        productTitle={productToDelete?.title}
+        onCancel={() => setShowModal(false)}
+        onConfirm={handleConfirmDelete}
+      />
+
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          onClose={() => setToastMessage(null)}
+        />
+      )}
     </div>
   );
 }
