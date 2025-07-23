@@ -6,12 +6,30 @@ import axios from "axios";
 
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const limit = 10;
 
   const totalPages = Math.ceil(totalCount / limit);
+
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      const allIds = products.map((p) => p.id);
+      setSelectedIds(allIds);
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  const handleSelectOne = (id) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
+    );
+  };
+
+  const isAllSelected = products.length > 0 && selectedIds.length === products.length;
 
   useEffect(() => {
     const offset = (currentPage - 1) * limit;
@@ -29,12 +47,11 @@ export default function ProductTable() {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 px-8 pt-2">
-      {/* Top bar */}
-      <div className="flex justify-between items-center p-2 border-b bg-white">
-        <h1 className="text-3xl font-semibold text-gray-900">Products</h1>
-        <div className="flex gap-2 items-center">
-          <button className="relative flex items-center border px-3 py-1 rounded text-gray-700">
+    <div className="flex flex-col flex-1 px-8 pt-2 overflow-hidden">
+      <div className="flex justify-between items-center p-2 mt-5 mb-2 border-b bg-white">
+        <h1 className="text-4xl font-semibold text-gray-900">Products</h1>
+        <div className="flex gap-4 items-center">
+          <button className="relative flex items-center gap-2 border px-3 py-1 rounded-md text-gray-700">
             {/* Filter SVG */}
             <svg
               width="14"
@@ -56,7 +73,7 @@ export default function ProductTable() {
               1
             </span>
           </button>
-          <button className="flex items-center border px-3 py-1 rounded text-gray-700">
+          <button className="flex items-center border gap-2 px-3 py-1 rounded-md text-gray-700">
             {/* Export SVG */}
             <svg
               width="14"
@@ -74,7 +91,7 @@ export default function ProductTable() {
             </svg>
             Export
           </button>
-          <button className="flex items-center bg-blue-500 text-white px-3 py-1 rounded">
+          <button className="flex items-center bg-blue-500 gap-1 text-white px-3 py-1 rounded-md">
             {/* Plus SVG */}
             <svg
               width="24"
@@ -95,28 +112,37 @@ export default function ProductTable() {
         </div>
       </div>
 
-      {/* Table */}
+      {/* Scrollable table container */}
       <div className="flex-1 overflow-y-auto">
         {loading ? (
-          <div className="flex justify-center items-center h-full">
-            Loading...
-          </div>
+          <div className="flex justify-center items-center h-full">Loading...</div>
         ) : (
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-white border-b">
               <tr>
-                <th className="p-2">#</th>
-                <th className="p-2">Image</th>
-                <th className="p-2">Title</th>
-                <th className="p-2">Description</th>
-                <th className="p-2">Price</th>
-                <th className="p-2">Actions</th>
+                <th className="p-2 text-left">
+                  <input
+                    type="checkbox"
+                    checked={isAllSelected}
+                    onChange={handleSelectAll}
+                  />
+                </th>
+                <th className="p-2 text-left">Image</th>
+                <th className="p-2 text-left">Title</th>
+                <th className="p-2 text-left">Description</th>
+                <th className="p-2 text-center">Price</th>
+                <th className="p-2 text-center ">Actions</th>
               </tr>
             </thead>
             <tbody>
               {products.length > 0 ? (
                 products.map((product) => (
-                  <ProductItem key={product.id} product={product} />
+                  <ProductItem
+                    key={product.id}
+                    product={product}
+                    isSelected={selectedIds.includes(product.id)}
+                    onSelect={() => handleSelectOne(product.id)}
+                  />
                 ))
               ) : (
                 <tr>
@@ -131,11 +157,13 @@ export default function ProductTable() {
       </div>
 
       {/* Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
+      <div className="shrink-0">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </div>
     </div>
   );
 }

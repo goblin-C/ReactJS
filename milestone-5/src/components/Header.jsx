@@ -1,12 +1,12 @@
 export default function Header() {
   return (
     <header className="flex justify-between items-center p-4 border-b bg-white">
-      <div className="relative w-72">
-        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">
+      <div className="relative w-72 ">
+        <span className="absolute left-3 top-2 text-gray-600">
           {/* Search icon */}
           <svg
-            width="16"
-            height="16"
+            width="14"
+            height="14"
             viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ export default function Header() {
         <input
           type="text"
           placeholder="Search..."
-          className="w-full border rounded px-10 py-2 focus:outline-none"
+          className="font-inter font-normal text-sm w-full px-10 py-2 border border-transparent hover:border-gray-400"
         />
       </div>
 
@@ -46,7 +46,7 @@ export default function Header() {
             />
           </svg>
 
-          <span className="hidden md:inline">Feedback?</span>
+          <span className="font-inter font-normal text-sm hidden md:inline">Feedback?</span>
         </button>
 
         <button>
