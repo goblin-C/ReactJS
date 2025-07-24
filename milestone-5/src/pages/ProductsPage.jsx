@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import SideNav from '../components/SideNav';
-import ProductTable from '../components/ProductTable';
-import Pagination from '../components/Pagination';
-import { getProducts } from '../services/productService';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import Header from "../components/Header";
+import SideNav from "../components/SideNav";
+import ProductTable from "../components/ProductTable";
+import Pagination from "../components/Pagination";
+import { getProducts } from "../services/productService";
+import axios from "axios";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -25,7 +25,8 @@ export default function ProductsPage() {
   }, [currentPage]);
 
   useEffect(() => {
-    axios.get("https://api.escuelajs.co/api/v1/products")
+    axios
+      .get("https://api.escuelajs.co/api/v1/products")
       .then((res) => setTotalCount(res.data.length))
       .catch(console.error);
   }, []);
@@ -36,7 +37,18 @@ export default function ProductsPage() {
       <div className="flex flex-col flex-1">
         <Header />
         <div className="flex-1 flex flex-col overflow-hidden">
-          <ProductTable products={products} loading={loading} />
+          <ProductTable
+            products={products}
+            loading={loading}
+            onDeleteSuccess={() => {
+              // Refetch after deletion
+              const offset = (currentPage - 1) * limit;
+              getProducts(offset, limit)
+                .then((res) => setProducts(res.data))
+                .catch(console.error);
+            }}
+          />
+
           <div className="border-t bg-white">
             <Pagination
               currentPage={currentPage}

@@ -1,69 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProductItem from "./ProductItem";
 import Toast from "./Toast";
 import Modal from "./Modal";
-import {
-  getProducts,
-  totalProducts,
-  deleteProduct,
-} from "../services/productService";
+import { deleteProduct } from "../services/productService";
 
-export default function ProductTable() {
-  const [products, setProducts] = useState([]);
+export default function ProductTable({ products, loading, onDeleteSuccess }) {
   const [selectedIds, setSelectedIds] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [count, setTotalCount] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
-  const limit = 10;
-
-  // Fetch total product count
-  useEffect(() => {
-    const fetchTotalCount = async () => {
-      try {
-        const response = await totalProducts();
-        setTotalCount(response.data.length);
-      } catch (err) {
-        console.error("Failed to fetch total count:", err);
-      }
-    };
-    fetchTotalCount();
-  }, []);
-
-  // Fetch paginated products
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const offset = (currentPage - 1) * limit;
-        const response = await getProducts(offset, limit);
-        setProducts(response.data);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [currentPage]);
-
-  // Auto-dismiss toast after 3 seconds
-  useEffect(() => {
-    if (toastMessage) {
-      const timer = setTimeout(() => setToastMessage(null), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [toastMessage]);
 
   const handleSelectAll = (e) => {
-    if (e.target.checked) {
-      const allIds = products.map((p) => p.id);
-      setSelectedIds(allIds);
-    } else {
-      setSelectedIds([]);
-    }
+    setSelectedIds(e.target.checked ? products.map((p) => p.id) : []);
   };
 
   const handleSelectOne = (id) => {
@@ -82,8 +30,8 @@ export default function ProductTable() {
 
     try {
       await deleteProduct(productToDelete.id);
-      setProducts((prev) => prev.filter((p) => p.id !== productToDelete.id));
       setToastMessage("Product deleted successfully");
+      onDeleteSuccess(); // ✅ trigger reload in parent
     } catch (err) {
       console.error("Delete failed:", err.response?.data || err.message);
       setToastMessage("Failed to delete product");
@@ -149,30 +97,7 @@ export default function ProductTable() {
         ) : (
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-white border-b">
-              <tr>
-                <th className="p-2 text-left">
-                  <input
-                    type="checkbox"
-                    checked={isAllSelected}
-                    onChange={handleSelectAll}
-                  />
-                </th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
-                  Image
-                </th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
-                  Title
-                </th>
-                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
-                  Description
-                </th>
-                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
-                  Price
-                </th>
-                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
-                  Actions
-                </th>
-              </tr>
+              {/* Table Headers */}
             </thead>
             <tbody>
               {products.length > 0 ? (
@@ -187,10 +112,7 @@ export default function ProductTable() {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan="6"
-                    className="text-center p-2 text-[#84919A] font-inter font-semibold text-xs uppercase"
-                  >
+                  <td colSpan="6" className="text-center p-2 text-[#84919A]">
                     No products available
                   </td>
                 </tr>
@@ -200,7 +122,6 @@ export default function ProductTable() {
         )}
       </div>
 
-      {/* Modal + Toast */}
       <Modal
         visible={showModal}
         productTitle={productToDelete?.title}
@@ -209,10 +130,7 @@ export default function ProductTable() {
       />
 
       {toastMessage && (
-        <Toast
-          message={toastMessage}
-          onClose={() => setToastMessage(null)}
-        />
+        <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
       )}
     </div>
   );
