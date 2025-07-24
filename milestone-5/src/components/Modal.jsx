@@ -4,7 +4,7 @@ const Modal = ({ visible, productTitle, onCancel, onConfirm }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-70 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-opacity-70 backdrop-blur-sm z-50">
       <div className="bg-white rounded-lg px-6 py-6 w-[400px] text-center shadow-xl">
         {/* Icon */}
         <div className="flex justify-center mb-4">
