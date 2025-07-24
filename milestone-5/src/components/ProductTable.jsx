@@ -89,7 +89,7 @@ export default function ProductTable({ products, loading, onDeleteSuccess }) {
       </div>
 
       {/* Table */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto scroll-smooth">
         {loading ? (
           <div className="flex justify-center items-center h-full">
             Loading...
@@ -97,7 +97,30 @@ export default function ProductTable({ products, loading, onDeleteSuccess }) {
         ) : (
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-white border-b">
-              {/* Table Headers */}
+              <tr>
+                <th className="p-2 text-left">
+                  <input
+                    type="checkbox"
+                    checked={isAllSelected}
+                    onChange={handleSelectAll}
+                  />
+                </th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Image
+                </th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Title
+                </th>
+                <th className="p-2 text-left text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Description
+                </th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Price
+                </th>
+                <th className="p-2 text-center text-[#84919A] font-inter font-semibold text-xs uppercase">
+                  Actions
+                </th>
+              </tr>
             </thead>
             <tbody>
               {products.length > 0 ? (
