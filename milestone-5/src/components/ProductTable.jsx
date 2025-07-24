@@ -3,12 +3,15 @@ import ProductItem from "./ProductItem";
 import Toast from "./Toast";
 import Modal from "./Modal";
 import { deleteProduct } from "../services/productService";
+import { useNavigate } from 'react-router-dom';
 
+// inside component
 export default function ProductTable({ products, loading, onDeleteSuccess }) {
   const [selectedIds, setSelectedIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleSelectAll = (e) => {
     setSelectedIds(e.target.checked ? products.map((p) => p.id) : []);
@@ -74,7 +77,9 @@ export default function ProductTable({ products, loading, onDeleteSuccess }) {
             Export
           </button>
 
-          <button className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1 text-sm font-inter rounded-md">
+          <button
+                onClick={() => navigate('/add')} 
+                className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1 text-sm font-inter rounded-md">
             <svg width="24" height="24" fill="none">
               <path
                 fillRule="evenodd"
