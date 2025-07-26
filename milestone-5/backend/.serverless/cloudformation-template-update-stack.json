@@ -141,6 +141,20 @@
                     "s3:PutObject"
                   ],
                   "Resource": "arn:aws:s3:::product-assets-1/products/*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "cognito-idp:AdminInitiateAuth",
+                    "cognito-idp:AdminCreateUser",
+                    "cognito-idp:AdminSetUserPassword"
+                  ],
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "CognitoUserPool",
+                      "Arn"
+                    ]
+                  }
                 }
               ]
             }
@@ -169,7 +183,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/image-url-service/dev/1753552623995-2025-07-26T17:57:03.995Z/image-url-service.zip"
+          "S3Key": "serverless/image-url-service/dev/1753556584157-2025-07-26T19:03:04.157Z/image-url-service.zip"
         },
         "Handler": "handler.uploadImage",
         "Runtime": "nodejs20.x",
@@ -178,7 +192,13 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "BUCKET_NAME": "product-assets-1"
+            "BUCKET_NAME": "product-assets-1",
+            "USER_POOL_ID": {
+              "Ref": "CognitoUserPool"
+            },
+            "USER_POOL_CLIENT_ID": {
+              "Ref": "CognitoUserPoolClient"
+            }
           }
         },
         "Role": {
@@ -192,7 +212,7 @@
         "UploadImageLogGroup"
       ]
     },
-    "UploadImageLambdaVersionPy67aTnepl80E65IVFJrwd4gPCPwDSPa2Zhns5qjkU": {
+    "UploadImageLambdaVersionWLUmNyfeDjsTd6oRvMQFykUkc4OgJc76szVG6NEs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -320,7 +340,7 @@
         "UploadImageLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1753552616851": {
+    "ApiGatewayDeployment1753556576270": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -369,6 +389,77 @@
           ]
         }
       }
+    },
+    "CognitoUserPool": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "UserPoolName": "image-url-service-user-pool-dev",
+        "UsernameAttributes": [
+          "email"
+        ],
+        "AutoVerifiedAttributes": [
+          "email"
+        ],
+        "Policies": {
+          "PasswordPolicy": {
+            "MinimumLength": 8,
+            "RequireUppercase": true,
+            "RequireLowercase": true,
+            "RequireNumbers": true,
+            "RequireSymbols": false
+          }
+        },
+        "Schema": [
+          {
+            "Name": "email",
+            "AttributeDataType": "String",
+            "Required": true,
+            "Mutable": true
+          },
+          {
+            "Name": "name",
+            "AttributeDataType": "String",
+            "Required": true,
+            "Mutable": true
+          }
+        ],
+        "UserPoolTags": {
+          "Environment": "dev",
+          "Service": "image-url-service"
+        }
+      }
+    },
+    "CognitoUserPoolClient": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "ClientName": "image-url-service-user-pool-client-dev",
+        "UserPoolId": {
+          "Ref": "CognitoUserPool"
+        },
+        "GenerateSecret": false,
+        "ExplicitAuthFlows": [
+          "ADMIN_NO_SRP_AUTH",
+          "USER_PASSWORD_AUTH"
+        ],
+        "SupportedIdentityProviders": [
+          "COGNITO"
+        ],
+        "CallbackURLs": [
+          "http://localhost:5173/"
+        ],
+        "LogoutURLs": [
+          "http://localhost:5173/"
+        ],
+        "AllowedOAuthFlows": [
+          "code"
+        ],
+        "AllowedOAuthScopes": [
+          "email",
+          "openid",
+          "profile"
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true
+      }
     }
   },
   "Outputs": {
@@ -383,7 +474,7 @@
     "UploadImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UploadImageLambdaVersionPy67aTnepl80E65IVFJrwd4gPCPwDSPa2Zhns5qjkU"
+        "Ref": "UploadImageLambdaVersionWLUmNyfeDjsTd6oRvMQFykUkc4OgJc76szVG6NEs"
       },
       "Export": {
         "Name": "sls-image-url-service-dev-UploadImageLambdaFunctionQualifiedArn"
@@ -413,6 +504,36 @@
       },
       "Export": {
         "Name": "sls-image-url-service-dev-ServiceEndpoint"
+      }
+    },
+    "CognitoUserPoolId": {
+      "Description": "ID of the Cognito User Pool",
+      "Value": {
+        "Ref": "CognitoUserPool"
+      },
+      "Export": {
+        "Name": "image-url-service-user-pool-id-dev"
+      }
+    },
+    "CognitoUserPoolClientId": {
+      "Description": "ID of the Cognito User Pool Client",
+      "Value": {
+        "Ref": "CognitoUserPoolClient"
+      },
+      "Export": {
+        "Name": "image-url-service-user-pool-client-id-dev"
+      }
+    },
+    "CognitoUserPoolArn": {
+      "Description": "ARN of the Cognito User Pool",
+      "Value": {
+        "Fn::GetAtt": [
+          "CognitoUserPool",
+          "Arn"
+        ]
+      },
+      "Export": {
+        "Name": "image-url-service-user-pool-arn-dev"
       }
     }
   }
