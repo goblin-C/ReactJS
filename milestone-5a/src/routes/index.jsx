@@ -1,5 +1,5 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import ProductListing from '../components/ProductList';
+import ProductListing from '../../pages/ProductList';
 import AddProduct from '../components/AddProduct';
 
 export default function AppRoutes({ searchText }) {
