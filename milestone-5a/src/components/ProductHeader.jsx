@@ -12,20 +12,22 @@ export default function ProductHeader() {
         <div className="flex flex-row justify-between items-center pt-8 pb-2 border-b border-b-[#E5E9EB]">
             <h1 className="text-product-header-text">Products</h1>
             <div className="flex">
-                <button className="flex mr-2 items-center w-[85px] h-[32px] justify-center border border-[#DDE2E4] rounded-[6px]">
-                    <img src="filter.svg" alt="filter" className="" />
+                <button className="flex mr-2 items-center w-[100px] h-[32px] justify-center border border-[#DDE2E4] rounded-[6px] gap-2">
+                    <img src="images/filter.svg" alt="filter" className="" />
                     <span className="text-sidebar-menu-text">Filter</span>
                 </button>
-                <button className="flex mr-[21px] items-center w-[96px] h-[32px] justify-center border border-[#DDE2E4] rounded-[6px]">
-                    <img src="export.svg" alt="filter" className="" />
+                <button className="flex mr-[21px] items-center w-[110px] h-[32px] justify-center border border-[#DDE2E4] rounded-[6px] gap-2">
+                    <img src="images/export.svg" alt="filter" className="" />
                     <span className="text-sidebar-menu-text">Export</span>
                 </button>
                 <Button 
                     buttonText="Add Product" 
-                    width="136px" 
+                    height="32px"
+                    width="140px"
                     icon="add.svg" 
                     onClick={handleAddProductClick}
                     type="button"
+                    image="true"
                 />
             </div>
         </div>

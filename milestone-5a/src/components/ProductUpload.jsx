@@ -54,7 +54,7 @@ export default function ProductUpload({ error, onImageUploaded, initialImageUrl 
         }
         
         if (file.size > maxSizeInBytes) {
-            return 'File size exceeds 5MB limit.';
+            return 'File size exceeds 5MB. Please Upload a smaller file.';
         }
         
         return null;

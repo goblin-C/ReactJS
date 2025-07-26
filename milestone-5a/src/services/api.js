@@ -6,7 +6,7 @@ const baseURL =  "https://api.escuelajs.co/api/v1/";
  * Makes a GET request to the specified endpoint.
  * @returns An object with `error` and `data` properties.
  */
-const getAPI = async (endpoint) => {
+export const getAPI = async (endpoint) => {
   try {
     console.log("The endpoint: ", `${baseURL}${endpoint}`);
     const { data } = await axios.get(`${baseURL}${endpoint}`);
@@ -27,7 +27,7 @@ const getAPI = async (endpoint) => {
  * Makes a POST request to the specified endpoint with a payload.
  * @returns An object with `error` and `data` properties.
  */
-const postAPI = async (endpoint, payload) => {
+export const postAPI = async (endpoint, payload) => {
   try {
     const { data } = await axios.post(`${baseURL}${endpoint}`, payload);
     return { error: false, data };
@@ -46,7 +46,7 @@ const postAPI = async (endpoint, payload) => {
  * Makes a PATCH request to the specified endpoint with a payload.
  * @returns An object with `error` and `data` properties.
  */
-const patchAPI = async (endpoint, payload) => {
+export const patchAPI = async (endpoint, payload) => {
   try {
     const data = await axios.patch(`${baseURL}${endpoint}`, payload);
     return { error: false, data: data.data };
@@ -64,7 +64,7 @@ const patchAPI = async (endpoint, payload) => {
  * Makes a PUT request to the specified endpoint with a payload.
  * @returns An object with `error` and `data` properties.
  */
-const putAPI = async (endpoint, payload) => {
+export const putAPI = async (endpoint, payload) => {
   try {
     const data = await axios.put(`${baseURL}${endpoint}`, payload);
     return { error: false, data: data.data };
@@ -83,7 +83,7 @@ const putAPI = async (endpoint, payload) => {
  * Makes a DELETE request to the specified endpoint.
  * @returns An object with `error` and `data` properties.
  */
-const deleteAPI = async (endpoint) => {
+export const deleteAPI = async (endpoint) => {
   try {
     const { data } = await axios.delete(`${baseURL}${endpoint}`);
     return { error: false, data };
@@ -98,4 +98,3 @@ const deleteAPI = async (endpoint) => {
   }
 };
 
-export default { getAPI, postAPI, patchAPI, putAPI, deleteAPI };

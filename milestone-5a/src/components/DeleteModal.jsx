@@ -5,7 +5,9 @@ import Button from './Button';
 
 export default function DeleteModal ({ isModalOpen, onClose, onConfirm, productName, loading }) {
   return (
-    <Modal open={isModalOpen} onClose={onClose} center showCloseIcon={false}>
+    <Modal open={isModalOpen} onClose={onClose} center showCloseIcon={false} classNames={{
+        modal: 'rounded-[8px] w-[400px] p-6' // your custom classes
+      }}>
       <div>
         <img src='images/delete_warning.svg' alt='Delete Icon'/>
         <h2 className="text-[#101828] text-delete-modal-header pb-[8px] pt-[18px]">Delete Product</h2>

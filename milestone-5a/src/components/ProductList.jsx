@@ -136,10 +136,10 @@ export default function ProductList({
                                     <td className="px-3 py-1">
                                         <div className='flex items-center gap-[22px]'>
                                             <button onClick={() => handleDeleteButtonClick(record)}>
-                                                <img src='delete.svg'/>
+                                                <img src='images/delete.svg'/>
                                             </button>
                                             <button onClick={() => handleEditClick(record.id)}>
-                                                <img src='edit.svg'/>
+                                                <img src='images/edit.svg'/>
                                             </button>
                                         </div>
                                     </td>

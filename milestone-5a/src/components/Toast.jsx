@@ -12,7 +12,7 @@ export default function Toast({ message, type, onClose }) {
     } w-[350px] h-[52px] rounded-[8px] shadow-[0px_16px_20px_-8px_#0305121A]`}>
       <img 
         className="ml-[16px] mr-3" 
-        src={`/${type}_toast.svg`} 
+        src={`/images/${type}_toast.svg`} 
         alt={type === 'success' ? 'Success' : 'Error'} 
       />
       <span className="text-toast-text text-[#28292A]">{message}</span>
@@ -22,7 +22,7 @@ export default function Toast({ message, type, onClose }) {
         aria-label="Close"
       >
         <img 
-          src={`/close_${type}_toast.svg`} 
+          src={`/images/close_${type}_toast.svg`} 
           alt="Close" 
           width="24" 
           height="24" 
