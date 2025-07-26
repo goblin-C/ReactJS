@@ -1,16 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProductsPage from './pages/ProductsPage';
-import AddProductPage from './pages/AddProductPage';
+import { useState } from 'react'
+import AppRoutes from './routes'
+import SideBar from './components/SideBar'
+import TopBar from './components/TopBar'
+import './index.css'
 
 function App() {
+  // Handler to set the search text
+  const [searchText, setSearchText] = useState('');
+  const updateSearchText = (text) => {
+    setSearchText(text);
+  }
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<ProductsPage />} />
-        <Route path="/add" element={<AddProductPage />} />
-      </Routes>
-    </Router>
-  );
+    <>
+    <div className='flex h-screen'>
+      <SideBar />
+      <div className='flex-1'>
+        <TopBar handleSearchText={updateSearchText}/>
+        <AppRoutes searchText={searchText}/>
+      </div>
+    </div>
+    </>
+  )
 }
 
-export default App;
+export default App
