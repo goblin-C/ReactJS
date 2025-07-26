@@ -7,14 +7,14 @@ provider:
   runtime: nodejs20.x
   region: ap-south-1
   environment:
-    BUCKET_NAME: product-assets
+    BUCKET_NAME: product-assets-1
   iam:
     role:
       statements:
         - Effect: Allow
           Action:
             - s3:PutObject
-          Resource: arn:aws:s3:::product-assets/products/*
+          Resource: arn:aws:s3:::product-assets-1/products/*
 
 functions:
   uploadImage:
