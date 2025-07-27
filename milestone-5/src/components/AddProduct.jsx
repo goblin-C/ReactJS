@@ -48,7 +48,6 @@ export default function AddProduct() {
         try {
           setIsLoadingData(true);
           const response = await getAPI(`products/${productId}`);
-          console.log(response);
           if (!response.error) {
             const product = response.data;
             setInitialData({

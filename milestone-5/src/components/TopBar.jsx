@@ -45,7 +45,7 @@ export default function TopBar({ handleSearchText, user }) {
         </button>
         <button
           onClick={handleLogout}
-          title={`Logout ${user?.username || "User"}`}
+          title={`Logout ${user?.email || "User"}`}
         >
           <img src="images/user.svg" alt="user" />
         </button>

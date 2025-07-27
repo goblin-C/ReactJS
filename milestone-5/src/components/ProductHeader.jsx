@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
-export default function ProductHeader() {
+export default function ProductHeader({ user }) {
     const navigate = useNavigate();
     
     const handleAddProductClick = () => {
@@ -20,7 +20,7 @@ export default function ProductHeader() {
                     <img src="images/export.svg" alt="filter" className="" />
                     <span className="text-sidebar-menu-text">Export</span>
                 </button>
-                <Button 
+                {user && <Button 
                     buttonText="Add Product" 
                     height="32px"
                     width="140px"
@@ -28,7 +28,7 @@ export default function ProductHeader() {
                     onClick={handleAddProductClick}
                     type="button"
                     image="true"
-                />
+                />}
             </div>
         </div>
     );

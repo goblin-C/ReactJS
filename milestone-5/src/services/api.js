@@ -8,11 +8,9 @@ const baseURL =  "https://api.escuelajs.co/api/v1/";
  */
 export const getAPI = async (endpoint) => {
   try {
-    console.log("The endpoint: ", `${baseURL}${endpoint}`);
     const { data } = await axios.get(`${baseURL}${endpoint}`);
     return { error: false, data };
   } catch (error) {
-    console.log("error", error);
     if (axios.isAxiosError(error)) {
       // Handle Axios-specific error
       return { error: true, data: error.response?.data || error };

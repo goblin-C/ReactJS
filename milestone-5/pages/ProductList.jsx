@@ -8,7 +8,7 @@ import DeleteModal from "../src/components/DeleteModal";
 import { getAPI, deleteAPI } from "../src/services/api";
 
 
-export default function ProductListing({ searchText = '' }) {
+export default function ProductListing({ searchText = '', user }) {
     const location = useLocation();
     const state = location.state || {};
     
@@ -186,8 +186,7 @@ export default function ProductListing({ searchText = '' }) {
                 productName={productToDelete?.title || ''}
                 loading={isModalLoading}
             />
-            
-            <ProductHeader />
+            <ProductHeader user={user}/>
             <ProductList 
                 products={products} 
                 currentPage={currentPage} 
