@@ -179,7 +179,7 @@ export default function ProductListing({ searchText = '', user }) {
                 </div>
             )}
             
-            <DeleteModal
+            <DeleteModal user={user}
                 isModalOpen={showDeleteModal}
                 onClose={handleCloseModal}
                 onConfirm={handleConfirmDelete}
@@ -187,7 +187,7 @@ export default function ProductListing({ searchText = '', user }) {
                 loading={isModalLoading}
             />
             <ProductHeader user={user}/>
-            <ProductList 
+            <ProductList user={user}
                 products={products} 
                 currentPage={currentPage} 
                 pageCount={totalPages} 
