@@ -70,16 +70,16 @@ export default function ProductList({
           <thead className="sticky top-0 bg-white z-10 shadow-[0_1px_0_0_#E5E9EB]">
             <tr>
               {productHeaders.map((header, index) => {
-                if (header === 'actions' && !user) return null; // hide actions header if no user
+                if (header === 'actions' && !user) return null;
                 return (
                   <th
                     key={index}
-                    className="px-3 pb-[11px] text-table-header-text text-table-header-text-color text-left"
+                    className="px-3 pb-[11px] text-tableHeader font-semibold text-[#84919A] uppercase align-middle text-left"
                   >
                     {header === 'checkbox' ? (
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded-[4px] border border-[#B0BABF] bg-[#F6F8F9] text-blue-600 focus:outline-none disabled:opacity-50"
+                        className="h-3 w-3 rounded-[4px] border border-[#B0BABF] bg-[#F6F8F9] text-blue-600 focus:outline-none disabled:opacity-50"
                         checked={isAllSelected}
                         onChange={handleHeaderCheckboxChange}
                       />
@@ -92,11 +92,11 @@ export default function ProductList({
           <tbody>
             {products?.length ? (
               products.map((record) => (
-                <tr key={record.id} className="h-[64.2px]">
+                <tr key={record.id} className="h-[64.2px] border-b border-[#E5E9EB]">
                   <td className="px-3 py-1">
                     <input
                       type="checkbox"
-                      className="h-4 w-4 rounded-[4px] border border-[#B0BABF] bg-[#F6F8F9] text-blue-600 focus:outline-none disabled:opacity-50"
+                      className="h-3 w-3 rounded-[4px] border border-[#B0BABF] bg-[#F6F8F9] text-blue-600 focus:outline-none disabled:opacity-50"
                       checked={selectedProducts.includes(record.id)}
                       onChange={() => handleProductCheckboxChange(record.id)}
                     />
@@ -109,28 +109,28 @@ export default function ProductList({
                     />
                   </td>
                   <td className="px-3 py-1">
-                    <div className="truncate">
+                    <div className="text-tableContent font-normal text-[#252C32] truncate">
                       {record.title}
                     </div>
                   </td>
                   <td className="px-3 py-1">
-                    <div className="truncate text-sm text-gray-600">
+                    <div className="text-tableContent font-normal text-[#252C32] truncate">
                       {record.description}
                     </div>
                   </td>
                   <td className="px-3 py-1">
-                    <div className="truncate">
+                    <div className="text-tableContent font-normal text-[#252C32] truncate">
                       ${record.price}
                     </div>
                   </td>
                   {user && (
                     <td className="px-3 py-1">
-                      <div className='flex items-center gap-[22px]'>
+                      <div className="flex items-center gap-[22px]">
                         <button onClick={() => handleDeleteButtonClick(record)}>
-                          <img src='images/delete.svg' alt="Delete" />
+                          <img src="images/delete.svg" alt="Delete" />
                         </button>
                         <button onClick={() => handleEditClick(record.id)}>
-                          <img src='images/edit.svg' alt="Edit" />
+                          <img src="images/edit.svg" alt="Edit" />
                         </button>
                       </div>
                     </td>

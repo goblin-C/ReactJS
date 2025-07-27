@@ -10,7 +10,7 @@ export default function ProductHeader({ user }) {
     
     return (
         <div className="flex flex-row justify-between items-center pt-8 pb-2 border-b border-b-[#E5E9EB]">
-            <h1 className="text-product-header-text">Products</h1>
+            <h1 className="font-inter font-extrabold text-4xl">Products</h1>
             <div className="flex">
                 <button className="flex mr-2 items-center w-[100px] h-[32px] justify-center border border-[#DDE2E4] rounded-[6px] gap-2">
                     <img src="images/filter.svg" alt="filter" className="" />

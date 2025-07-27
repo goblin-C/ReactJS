@@ -10,7 +10,7 @@ import { getAPI, deleteAPI } from "../src/services/api";
 
 export default function ProductListing({ searchText = '', user }) {
     const location = useLocation();
-    const state = location.state || {};
+    const state = location.state;
     
     // Toast state
     const [showToast, setShowToast] = useState(false);
