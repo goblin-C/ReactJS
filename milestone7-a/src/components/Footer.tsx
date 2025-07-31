@@ -32,7 +32,7 @@ export const Footer = () => {
   return (
     <footer className="bg-[#F0F0F0] py-16">
       <div className="px-8 lg:px-[100px]">
-        <div className="flex flex-col md:flex-row gap-[106px] 2xl:justify-between">
+        <div className="flex flex-col flex-wrap md:flex-row gap-[106px] 2xl:justify-between">
           <div className="w-fit max-w-xs">
             <h3 className="text-navbar-h1 font-alfa mb-[25px]">FAKESTORE</h3>
             <p className="text-[#00000099] text-footer-description-text mb-[35px]">

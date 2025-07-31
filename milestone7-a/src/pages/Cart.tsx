@@ -161,7 +161,7 @@ export default function Cart() {
 
   return (
     <div>
-      <div className="sticky top-[95px] bg-white z-40 pb-4">
+      <div className="mt-[81px] bg-white z-40 py-4">
         <Breadcrumb items={breadcrumbs} />
         <div className="mx-[100px] pt-8">
           <h1 className="text-navbar-h1 font-alfa mb-8">Your cart</h1>
