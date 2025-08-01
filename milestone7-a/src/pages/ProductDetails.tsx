@@ -164,45 +164,48 @@ export default function ProductDetails() {
     <div>
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="mx-[100px] py-8">
-        <div className="grid lg:grid-cols-2 gap-[41px]">
-          <div className="flex ml-0 gap-[13px]">
-            <div>
+      <div className="px-4 md:px-8 lg:px-16 xl:px-24 py-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+            {/* Thumbnail images - hidden on mobile, shown as row on tablet+ */}
+            <div className="hidden md:flex md:flex-col gap-3">
               {(product.images || [])
                 .slice(0, 3)
                 .map((img: string, i: number) => (
                   <div
                     key={i}
-                    className="w-[120px] lg:w-[152px] h-[160px] lg:h-[208px] overflow-hidden pb-[14px]"
+                    className="w-20 h-24 md:w-24 md:h-32 lg:w-32 lg:h-40 overflow-hidden"
                   >
                     <img
                       src={img}
                       alt={`${product.title} view ${i + 1}`}
-                      className="rounded-[20px] w-full h-full object-cover"
+                      className="rounded-2xl w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
                     />
                   </div>
                 ))}
             </div>
-            <div className="w-[300px] lg:w-[380px] xl:w-[444px] h-[400px] lg:h-[500px] xl:h-[610px] overflow-hidden">
+            
+            {/* Main product image */}
+            <div className="flex-1 aspect-square md:aspect-[4/5] overflow-hidden">
               <img
                 src={product.images[0] || product.images?.[0]}
                 alt={product.title}
-                className="rounded-[20px] w-full h-full object-cover"
+                className="rounded-2xl w-full h-full object-cover"
               />
             </div>
           </div>
 
-          <div>
+          <div className="space-y-6">
             <div>
-              <h1 className="text-navbar-h1 font-alfa pb-6">{product.title}</h1>
-              <span className="text-product-view-price">${product.price}</span>
+              <h1 className="text-xl md:text-2xl lg:text-navbar-h1 font-alfa mb-4">{product.title}</h1>
+              <span className="text-2xl md:text-3xl lg:text-product-view-price font-bold">${product.price}</span>
             </div>
 
-            <p className="text-[#00000099] leading-relaxed pb-6 border-b border-[#0000001A] mb-6 pt-6">
+            <p className="text-[#00000099] leading-relaxed text-sm md:text-base pb-6 border-b border-[#0000001A]">
               {product.description}
             </p>
 
-            <div className="pb-6 border-b border-[#0000001A] mb-6">
+            <div className="pb-6 border-b border-[#0000001A]">
               <SelectionGroup
                 title="Select Colors"
                 options={colors}
@@ -211,7 +214,8 @@ export default function ProductDetails() {
                 type="color"
               />
             </div>
-            <div className="pb-6 border-b border-[#0000001A] mb-6">
+            
+            <div className="pb-6 border-b border-[#0000001A]">
               <SelectionGroup
                 title="Choose Size"
                 options={sizes}
@@ -219,12 +223,13 @@ export default function ProductDetails() {
                 onSelect={setSelectedSize}
               />
             </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-5">
+            
+            <div className="flex flex-col sm:flex-row gap-4">
               <QuantitySelector quantity={quantity} onUpdate={setQuantity} />
               <Button 
                 buttonText="Add to Cart"
                 width="100%"
-                className="lg:w-[400px]"
+                className="flex-1 min-w-0"
                 onClick={() => {
                   const cartItem = {
                     id: product.id,

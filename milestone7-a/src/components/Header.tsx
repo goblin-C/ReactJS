@@ -32,76 +32,115 @@ export const Header = () => {
       )}
 
       {/* Header */}
-      <header className="fixed w-full top-0 border-b border-gray-200 bg-white z-50 p-[1.5rem] md:px-[2rem] xl:px-[6rem]">
-        <div className="flex items-center justify-between flex-wrap">
+      <header className="fixed w-full top-0 border-b border-gray-200 bg-white z-50 px-4 py-6 md:px-8 xl:px-24">
+        <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="font-alfa text-navbar-h1 font-bold flex-shrink-0 mr-[1rem] lg:mr-[2rem]"
+            className="font-alfa text-navbar-h1 font-bold flex-shrink-0"
           >
-            <span className="block md:hidden">FS</span>
-            <span className="hidden md:block">FAKESTORE</span>
+            <span className="block xl:hidden">FS</span>
+            <span className="hidden xl:block">FAKESTORE</span>
           </Link>
 
-          {isMobile ? (
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6 flex-1 justify-center">
+            <div className="flex items-center space-x-1 cursor-pointer">
+              <span className="text-navbar-menu-text">Shop</span>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+            <span className="text-navbar-menu-text cursor-pointer">On Sale</span>
+            <span className="text-navbar-menu-text cursor-pointer">New Arrivals</span>
+            <span className="text-navbar-menu-text cursor-pointer">Brands</span>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            {/* Desktop Search */}
+            <div className="relative hidden lg:block">
+              <img
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6"
+                src="/search.svg"
+                alt="search"
+              />
+              <input
+                type="text"
+                placeholder="Search for products..."
+                className="pl-10 pr-4 py-3 w-60 lg:w-72 xl:w-96 bg-[#F0F0F0] border-0 rounded-full outline-none"
+              />
+            </div>
+            
+            {/* Cart */}
+            <Link to="/cart" className="relative">
+              <img className="w-7 h-7" src="/cart.svg" alt="cart" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
+            
+            {/* Profile */}
+            <button className="hidden md:block">
+              <img className="w-7 h-7" src="/profile.svg" alt="profile" />
+            </button>
+            
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
               <Menu className="w-6 h-6" />
             </button>
-          ) : (
-            <nav className="flex items-center gap-[1rem] lg:gap-[1.5rem] flex-1 justify-center">
-              <div className="flex items-center space-x-[0.25rem] cursor-pointer">
-                <span className="text-navbar-menu-text">Shop</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <span className="text-navbar-menu-text cursor-pointer">On Sale</span>
-              <span className="text-navbar-menu-text cursor-pointer">New Arrivals</span>
-              <span className="text-navbar-menu-text cursor-pointer">Brands</span>
-            </nav>
-          )}
+          </div>
+        </div>
 
-          <div className="flex items-center flex-shrink-0 ml-auto">
-            {!isMobile && (
+        {/* Mobile Navigation */}
+        {isMobile && (
+          <div
+            className={`
+              fixed top-0 left-0 w-full h-screen bg-white z-40
+              transform transition-transform duration-300 ease-in-out
+              ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+            `}
+          >
+            <div className="flex justify-between items-center p-4 border-b">
+              <span className="font-alfa text-navbar-h1 font-bold">FS</span>
+              <button onClick={() => setIsMobileMenuOpen(false)}>
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Mobile Search */}
+            <div className="p-4 border-b">
               <div className="relative">
                 <img
-                  className="absolute left-[0.75rem] top-1/2 transform -translate-y-1/2 w-[1.5rem] h-[1.5rem]"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
                   src="/search.svg"
                   alt="search"
                 />
                 <input
                   type="text"
                   placeholder="Search for products..."
-                  className="pl-[2.5rem] pr-[1rem] py-[0.75rem] w-[15rem] lg:w-[18.75rem] xl:w-[31.5rem] bg-[#F0F0F0] border-0 rounded-[3.875rem] outline-none mr-[1rem] lg:mr-[1.5rem] xl:mr-[2.5rem]"
+                  className="pl-10 pr-4 py-3 w-full bg-[#F0F0F0] border-0 rounded-full outline-none"
                 />
               </div>
-            )}
-            <Link to="/cart" className="pr-[0.75rem] lg:pr-[0.875rem] relative">
-              <img className="w-[1.75rem] h-[1.75rem] lg:w-[1.5rem] lg:h-[1.5rem]" src="/cart.svg" alt="cart" />
-              {cartItems.length > 0 && (
-                <span className="absolute -top-[0.5rem] left-[0.75rem] bg-red-500 text-white text-xs rounded-full w-[1.25rem] h-[1.25rem] flex items-center justify-center">
-                  {cartItems.length}
-                </span>
-              )}
-            </Link>
-            <button>
-              <img className="w-[1.75rem] h-[1.75rem] lg:w-[1.5rem] lg:h-[1.5rem]" src="/profile.svg" alt="profile" />
-            </button>
+            </div>
+            
+            {/* Mobile Menu Items */}
+            <div className="flex flex-col p-4 space-y-6">
+              <span className="text-navbar-menu-text cursor-pointer text-lg">Shop</span>
+              <span className="text-navbar-menu-text cursor-pointer text-lg">On Sale</span>
+              <span className="text-navbar-menu-text cursor-pointer text-lg">New Arrivals</span>
+              <span className="text-navbar-menu-text cursor-pointer text-lg">Brands</span>
+              
+              <div className="pt-6 border-t">
+                <button className="flex items-center gap-3">
+                  <img className="w-6 h-6" src="/profile.svg" alt="profile" />
+                  <span className="text-navbar-menu-text text-lg">Profile</span>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Mobile nav list */}
-{isMobile && (
-  <div
-    className={`
-      mt-[1rem] flex flex-col gap-4 absolute bg-[#ccc] p-4 left-0 top-16
-      transition-transform duration-500 ease-in z-50 h-[100vh]
-      ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
-    `}
-  >
-    <span className="text-navbar-menu-text cursor-pointer">Shop</span>
-    <span className="text-navbar-menu-text cursor-pointer">On Sale</span>
-    <span className="text-navbar-menu-text cursor-pointer">New Arrivals</span>
-    <span className="text-navbar-menu-text cursor-pointer">Brands</span>
-  </div>
-)}
+        )}
 
       </header>
     </>

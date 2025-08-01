@@ -161,14 +161,14 @@ export default function Cart() {
 
   return (
     <div>
-      <div className="mt-[81px] bg-white z-40 py-4">
+      <div className="mt-16 md:mt-20 bg-white z-40 py-4">
         <Breadcrumb items={breadcrumbs} />
-        <div className="mx-[100px] pt-8">
-          <h1 className="text-navbar-h1 font-alfa mb-8">Your cart</h1>
+        <div className="px-4 md:px-8 lg:px-16 xl:px-24 pt-8">
+          <h1 className="text-2xl md:text-3xl lg:text-navbar-h1 font-alfa mb-8">Your cart</h1>
         </div>
       </div>
 
-      <div className="mx-[100px] pb-[114px]">
+      <div className="px-4 md:px-8 lg:px-16 xl:px-24 pb-16 md:pb-24">
 
         {cartItems.length === 0 ? (
           <div className="text-center py-16">
@@ -185,7 +185,7 @@ export default function Cart() {
             </Button>
           </div>
         ) : (
-        <div className="flex flex-row gap-[20px]">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           <div className="flex-1">
             <div className="border border-gray-200 rounded-[20px]">
               {[...cartItems].reverse().map((item, index) => (
@@ -203,7 +203,7 @@ export default function Cart() {
             </div>
           </div>
 
-          <div className="w-[505px] space-y-6">
+          <div className="lg:w-[400px] xl:w-[505px] space-y-6">
             <div className="border border-[#0000001A] rounded-[20px] p-6">
               <h2 className="text-product-card-price mb-6">Order Summary</h2>
 
@@ -224,16 +224,16 @@ export default function Cart() {
                       placeholder="Add promo code"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
-                      className="pl-10 w-[326px] h-[48px] rounded-[62px] border-gray-300 bg-[#F0F0F0]"
+                      className="pl-10 w-full h-12 rounded-full border-gray-300 bg-[#F0F0F0]"
                     />
                   </div>
-                  <Button className="bg-black w-[119px] h-[48px] text-white px-6 rounded-full hover:bg-gray-800">
+                  <Button className="bg-black w-24 md:w-28 h-12 text-white px-4 md:px-6 rounded-full hover:bg-gray-800 flex-shrink-0">
                     Apply
                   </Button>
                 </div>
               </div>
 
-              <Button className="w-full h-[60px] bg-black text-white py-4 rounded-full hover:bg-gray-800 mt-6 flex items-center justify-center space-x-2">
+              <Button className="w-full h-12 md:h-15 bg-black text-white py-4 rounded-full hover:bg-gray-800 mt-6 flex items-center justify-center space-x-2">
                 <span>Go to Checkout</span>
                 <ArrowRight className="w-4 h-4" />
               </Button>
