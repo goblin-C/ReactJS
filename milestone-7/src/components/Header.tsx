@@ -97,8 +97,8 @@ export const Header = () => {
         {isMobile && (
           <div
             className={`
-              fixed top-0 left-0 w-full h-screen bg-white z-40
-              transform transition-transform duration-300 ease-in-out
+              fixed top-3 left-0 w-full h-screen bg-white z-40
+              transform transition-transform duration-100 ease-in-out
               ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
             `}
           >
@@ -108,7 +108,6 @@ export const Header = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            
             {/* Mobile Search */}
             <div className="p-4 border-b">
               <div className="relative">

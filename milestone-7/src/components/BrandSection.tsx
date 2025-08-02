@@ -1,5 +1,5 @@
 export const BrandSection = () => {
-  const brands = ["VERSACE", "ZARA", "GUCCI", "PRADA", "CALVIN_KLEIN"]
+  const brands = ["ZARA", "GUCCI", "PRADA"]
 
   return (
     <section className="bg-black py-8 md:py-11">
