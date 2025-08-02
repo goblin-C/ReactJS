@@ -165,7 +165,7 @@ export default function ProductDetails() {
     <div>
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="px-4 md:px-6 lg:px-8 xl:px-24 py-[90px] md:py-18 max-w-7xl mx-auto">
+      <div className="px-4 md:px-6 lg:px-8 xl:px-24 py-5 lg:py-[90px] md:py-18 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Image Section */}
           <div className="w-full">

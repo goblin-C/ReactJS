@@ -1,6 +1,6 @@
 interface ToastMessageProps {
   message: string;
-  type: 'success' | 'error' | 'info' | null | undefined;
+  type: 'success' | 'error'
   onClose?: () => void;
 }
 

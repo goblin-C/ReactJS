@@ -3,9 +3,9 @@ import Button from './Button'
 export const HeroSection = () => {
   return (
     <section className="
-      mt-16 md:mt-20 lg:mt-24
+      mt-3 md:mt-9 lg:mt-12
       min-h-[70vh] md:min-h-[80vh]
-      px-4 py-8 md:px-8 lg:px-16 xl:px-24
+      px-4 pt-8 pb-4 md:px-8 lg:px-16 xl:px-24
       bg-[#F2F0F1]
       xl:bg-[url('/hero_background.png')] xl:bg-contain xl:bg-right xl:bg-no-repeat
       flex items-center

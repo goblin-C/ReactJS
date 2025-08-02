@@ -56,16 +56,7 @@ const Homepage = () => {
       <StyleSection />
       <Footer />
       
-      {/* Toast Message */}
-      {toast.show && (
-        <div className="fixed top-6 right-6 z-100 p-4">
-          <ToastMessage 
-            message={toast.message}
-            type={toast.type} 
-            onClose={() => dispatch(hideToast())}
-          />
-        </div>
-      )}
+
     </div>
   )
 }
