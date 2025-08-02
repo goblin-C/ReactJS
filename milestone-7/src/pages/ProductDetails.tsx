@@ -153,7 +153,7 @@ export default function ProductDetails() {
     <div>
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="px-4 md:px-6 lg:px-8 xl:px-24 py-6 md:py-8 max-w-7xl mx-auto">
+      <div className="px-4 md:px-6 lg:px-8 xl:px-24 py-[90px] md:py-18 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Image Section */}
           <div className="w-full">
@@ -220,7 +220,7 @@ export default function ProductDetails() {
             {/* Title and Price */}
             <div className="space-y-2">
               <h1 className="text-lg md:text-xl lg:text-2xl xl:text-navbar-h1 font-alfa leading-tight">{product.title}</h1>
-              <span className="text-xl md:text-2xl lg:text-3xl xl:text-product-view-price font-bold">${product.price}</span>
+              <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">${product.price}</span>
             </div>
 
             {/* Description */}
@@ -259,7 +259,7 @@ export default function ProductDetails() {
               <Button 
                 buttonText="Add to Cart"
                 width="100%"
-                className="flex-1 min-w-0"
+                className="flex-0 min-w-0"
                 onClick={() => {
                   const cartItem = {
                     id: product.id,
