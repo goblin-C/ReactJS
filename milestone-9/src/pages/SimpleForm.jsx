@@ -12,10 +12,14 @@ export default function SimpleForm() {
     e.preventDefault();
     console.log(form);
     setSubmitted(true);
+    window.location.href = "http://localhost:5173/";
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/login.jpg')" }}>
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/login.jpg')" }}
+    >
       <form
         onSubmit={handleSubmit}
         data-testid="simple-form"
