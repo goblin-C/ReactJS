@@ -63,11 +63,10 @@ const productSlice = createSlice({
             })
             .addCase(fetchList.fulfilled, (state, action: PayloadAction<ApiResponse>) => {
                 state.loading = false;
-                console.log('action.payload', action.payload.data.length);
                 if (action.payload.status) {
                     state.data = action.payload.data;
                     state.recordCount = action.payload.data.length
-                    state.success = 'true'; // Ensure success is a string
+                    state.success = 'true';
                 } else {
                     state.success = 'false';
                     state.status = action.payload.status;

@@ -31,7 +31,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-[#F0F0F0] py-8 md:py-12 lg:py-16">
-      <div className="px-4 md:px-8 lg:px-16 xl:px-24 max-w-7xl mx-auto">
+      <div className="px-5 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand section */}
           <div className="lg:col-span-2">

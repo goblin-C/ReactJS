@@ -18,9 +18,9 @@ const createProducts = async () => {
     const product = generateProduct(i);
     try {
       const res = await axios.post(API_URL, product);
-      console.log(`✅ Created: ${res.data.title} (ID: ${res.data.id})`);
+      console.log(`Created: ${res.data.title} (ID: ${res.data.id})`);
     } catch (error) {
-      console.error(`❌ Error creating product ${i + 1}:`, error.response?.data || error.message);
+      console.error(`Error creating product ${i + 1}:`, error.response?.data || error.message);
     }
   }
 };

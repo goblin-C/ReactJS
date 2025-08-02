@@ -27,9 +27,7 @@ const Homepage = () => {
       }, 3000)
       return () => clearTimeout(timer)
     }
-  }, [toast.show, dispatch])
-  console.log('The freakin state', products)
-  
+  }, [toast.show, dispatch])  
   if (products.loading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -60,9 +58,9 @@ const Homepage = () => {
       
       {/* Toast Message */}
       {toast.show && (
-        <div className="fixed top-6 right-6 z-50 p-4">
+        <div className="fixed top-6 right-6 z-100 p-4">
           <ToastMessage 
-            message={toast.message} 
+            message={toast.message}
             type={toast.type} 
             onClose={() => dispatch(hideToast())}
           />
