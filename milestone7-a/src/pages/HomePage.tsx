@@ -1,8 +1,10 @@
 import { X, Search, ShoppingCart, User, ChevronDown, Star } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
-
+import { useIsMobile } from "../hooks/use-mobile";
 export default function HomePage() {
+    const isMobile = useIsMobile();
+  
   const newArrivals = [
     {
       id: 1,
@@ -128,7 +130,7 @@ export default function HomePage() {
 
             <Button className="bg-black text-white px-12 py-6 text-lg rounded-full hover:bg-gray-800">Shop Now</Button>
 
-            <div className="flex flex-wrap gap-8 pt-8">
+            <div className="flex flex-wrap gap-8 pt-8 md:hidden">
               <div>
                 <div className="text-3xl font-bold text-black">200+</div>
                 <div className="text-gray-600">International Brands</div>
@@ -144,7 +146,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative opacity-0">
             <img
               src="/placeholder.svg?height=600&width=500"
               alt="Fashion models wearing stylish clothing"
@@ -155,14 +157,11 @@ export default function HomePage() {
       </section>
 
       {/* Brand Section */}
-      <section className="bg-black py-12 px-4">
+      <section className="bg-black py-12 px-4 md:hidden">
         <div className="max-w-7xl mx-auto flex justify-center items-center space-x-16 flex-wrap gap-8">
-          <div className="text-white text-2xl font-bold tracking-wider">VERSACE</div>
           <div className="text-white text-2xl font-bold tracking-wider">ZARA</div>
           <div className="text-white text-2xl font-bold tracking-wider">GUCCI</div>
-          <div className="text-white text-2xl font-bold tracking-wider">GUCCI</div>
           <div className="text-white text-2xl font-bold tracking-wider">PRADA</div>
-          <div className="text-white text-2xl font-bold tracking-wider">Calvin Klein</div>
         </div>
       </section>
 

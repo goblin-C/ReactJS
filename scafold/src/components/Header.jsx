@@ -2,7 +2,7 @@ import { Search } from "../components/Search";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center px-8 py-4 bg-white">
+    <header className="sticky top-0 flex justify-between items-center px-8 py-4 bg-white">
 
       <Search />
 

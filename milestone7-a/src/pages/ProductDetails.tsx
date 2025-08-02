@@ -27,34 +27,23 @@ const QuantitySelector = ({
   quantity: number;
   onUpdate: (qty: number) => void;
 }) => (
-  <div className="flex items-center bg-gray-100 rounded-full">
-    {[
-      { icon: Minus, action: -1 },
-      { icon: Plus, action: 1 },
-    ]
-      .map(({ icon: Icon, action }, idx) => (
-        <button
-          key={idx}
-          onClick={() => onUpdate(Math.max(1, quantity + action))}
-          className="p-3 hover:bg-gray-200 rounded-full"
-        >
-          <Icon className="w-6 h-6" />
-        </button>
-      ))
-      .reduce(
-        (acc, btn, idx) => [
-          ...acc,
-          ...(idx === 1
-            ? [
-                <span key="qty" className="px-8 py-3 font-medium">
-                  {quantity}
-                </span>,
-              ]
-            : []),
-          btn,
-        ],
-        []
-      )}
+  <div className="flex items-center bg-gray-100 rounded-full w-fit">
+    <button
+      onClick={() => onUpdate(Math.max(1, quantity - 1))}
+      className="p-2 md:p-3 hover:bg-gray-200 rounded-full transition-colors"
+      disabled={quantity <= 1}
+    >
+      <Minus className="w-4 h-4 md:w-5 md:h-5" />
+    </button>
+    <span className="px-4 md:px-6 py-2 md:py-3 font-medium text-sm md:text-base min-w-[3rem] text-center">
+      {quantity}
+    </span>
+    <button
+      onClick={() => onUpdate(quantity + 1)}
+      className="p-2 md:p-3 hover:bg-gray-200 rounded-full transition-colors"
+    >
+      <Plus className="w-4 h-4 md:w-5 md:h-5" />
+    </button>
   </div>
 );
 
@@ -72,8 +61,8 @@ const SelectionGroup = ({
   type?: "button" | "color";
 }) => (
   <div>
-    <h3 className="text-lg font-medium mb-3">{title}</h3>
-    <div className="flex space-x-3">
+    <h3 className="text-base md:text-lg font-medium mb-3">{title}</h3>
+    <div className="flex flex-wrap gap-2 md:gap-3">
       {options.map((option) => {
         const value = typeof option === "string" ? option : option.name;
         const isSelected = selected === value;
@@ -82,20 +71,20 @@ const SelectionGroup = ({
           <button
             key={value}
             onClick={() => onSelect(value)}
-            className={`w-10 h-10 rounded-full ${option.class} border-2 ${
+            className={`w-8 h-8 md:w-10 md:h-10 rounded-full ${option.class} border-2 ${
               isSelected ? "border-black" : "border-gray-300"
-            } flex items-center justify-center`}
+            } flex items-center justify-center transition-all hover:scale-110`}
           >
-            {isSelected && <Check className="w-4 h-4 text-white" />}
+            {isSelected && <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />}
           </button>
         ) : (
           <button
             key={value}
             onClick={() => onSelect(value)}
-            className={`px-6 py-3 rounded-full border ${
+            className={`px-3 py-2 md:px-4 md:py-3 rounded-full border text-sm md:text-base transition-colors ${
               isSelected
                 ? "bg-black text-white border-black"
-                : "bg-[#F0F0F0] text-[#00000099] border-gray-300"
+                : "bg-[#F0F0F0] text-[#00000099] border-gray-300 hover:bg-gray-200"
             }`}
           >
             {value}
@@ -164,45 +153,85 @@ export default function ProductDetails() {
     <div>
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="mx-[100px] py-8">
-        <div className="grid lg:grid-cols-2 gap-[41px]">
-          <div className="flex ml-0 gap-[13px]">
-            <div>
-              {(product.images || [])
-                .slice(0, 3)
-                .map((img: string, i: number) => (
-                  <div
-                    key={i}
-                    className="w-[120px] lg:w-[152px] h-[160px] lg:h-[208px] overflow-hidden pb-[14px]"
-                  >
-                    <img
-                      src={img}
-                      alt={`${product.title} view ${i + 1}`}
-                      className="rounded-[20px] w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
+      <div className="px-4 md:px-6 lg:px-8 xl:px-24 py-6 md:py-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          {/* Image Section */}
+          <div className="w-full">
+            {/* Mobile: Single main image */}
+            <div className="block md:hidden">
+              <div className="w-full aspect-square overflow-hidden">
+                <img
+                  src={product.images[0] || product.images?.[0]}
+                  alt={product.title}
+                  className="rounded-2xl w-full h-full object-cover"
+                />
+              </div>
+              {/* Mobile thumbnail strip */}
+              {product.images && product.images.length > 1 && (
+                <div className="flex gap-2 mt-3 overflow-x-auto">
+                  {product.images.slice(0, 4).map((img: string, i: number) => (
+                    <div key={i} className="flex-shrink-0 w-16 h-16 overflow-hidden">
+                      <img
+                        src={img}
+                        alt={`${product.title} view ${i + 1}`}
+                        className="rounded-lg w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="w-[300px] lg:w-[380px] xl:w-[444px] h-[400px] lg:h-[500px] xl:h-[610px] overflow-hidden">
-              <img
-                src={product.images[0] || product.images?.[0]}
-                alt={product.title}
-                className="rounded-[20px] w-full h-full object-cover"
-              />
+            
+            {/* Tablet and Desktop: Side thumbnails + main image */}
+            <div className="hidden md:flex gap-3 lg:gap-4">
+              {/* Thumbnail column */}
+              <div className="flex flex-col gap-3 flex-shrink-0">
+                {(product.images || [])
+                  .slice(0, 3)
+                  .map((img: string, i: number) => (
+                    <div
+                      key={i}
+                      className="w-16 h-20 md:w-20 md:h-24 lg:w-24 lg:h-32 overflow-hidden"
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.title} view ${i + 1}`}
+                        className="rounded-xl w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                      />
+                    </div>
+                  ))}
+              </div>
+              
+              {/* Main image */}
+              <div className="flex-1 max-w-md lg:max-w-lg">
+                <div className="w-full aspect-[4/5] overflow-hidden">
+                  <img
+                    src={product.images[0] || product.images?.[0]}
+                    alt={product.title}
+                    className="rounded-2xl w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <div>
-              <h1 className="text-navbar-h1 font-alfa pb-6">{product.title}</h1>
-              <span className="text-product-view-price">${product.price}</span>
+          {/* Product Info Section */}
+          <div className="w-full space-y-4 md:space-y-6">
+            {/* Title and Price */}
+            <div className="space-y-2">
+              <h1 className="text-lg md:text-xl lg:text-2xl xl:text-navbar-h1 font-alfa leading-tight">{product.title}</h1>
+              <span className="text-xl md:text-2xl lg:text-3xl xl:text-product-view-price font-bold">${product.price}</span>
             </div>
 
-            <p className="text-[#00000099] leading-relaxed pb-6 border-b border-[#0000001A] mb-6 pt-6">
-              {product.description}
-            </p>
+            {/* Description */}
+            <div className="pb-4 md:pb-6 border-b border-[#0000001A]">
+              <p className="text-[#00000099] leading-relaxed text-sm md:text-base">
+                {product.description}
+              </p>
+            </div>
 
-            <div className="pb-6 border-b border-[#0000001A] mb-6">
+            {/* Color Selection */}
+            <div className="pb-4 md:pb-6 border-b border-[#0000001A]">
               <SelectionGroup
                 title="Select Colors"
                 options={colors}
@@ -211,7 +240,9 @@ export default function ProductDetails() {
                 type="color"
               />
             </div>
-            <div className="pb-6 border-b border-[#0000001A] mb-6">
+            
+            {/* Size Selection */}
+            <div className="pb-4 md:pb-6 border-b border-[#0000001A]">
               <SelectionGroup
                 title="Choose Size"
                 options={sizes}
@@ -219,12 +250,16 @@ export default function ProductDetails() {
                 onSelect={setSelectedSize}
               />
             </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-5">
-              <QuantitySelector quantity={quantity} onUpdate={setQuantity} />
+            
+            {/* Quantity and Add to Cart */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+              <div className="flex-shrink-0">
+                <QuantitySelector quantity={quantity} onUpdate={setQuantity} />
+              </div>
               <Button 
                 buttonText="Add to Cart"
                 width="100%"
-                className="lg:w-[400px]"
+                className="flex-1 min-w-0"
                 onClick={() => {
                   const cartItem = {
                     id: product.id,
