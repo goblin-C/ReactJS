@@ -8,7 +8,9 @@ import { useState } from "react";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const showSignUpOffer = useSelector((state: RootState) => state.ui.showSignUpBanner);
+  const showSignUpOffer = useSelector(
+    (state: RootState) => state.ui.showSignUpBanner
+  );
   const cartItems = useSelector((state: RootState) => state.cart.data || []);
   const handleCloseSignUpOffer = () => dispatch(hideSignUpBanner());
   const isMobile = useIsMobile();
@@ -22,7 +24,9 @@ export const Header = () => {
           <div className="flex items-center justify-center relative max-w-7xl mx-auto">
             <span>
               Sign up and get 20% off your first order.{" "}
-              <span className="underline font-medium cursor-pointer">Sign Up Now</span>
+              <span className="underline font-medium cursor-pointer">
+                Sign Up Now
+              </span>
             </span>
             <button className="absolute right-0 p-[0.25rem]">
               <X className="w-4 h-4" onClick={handleCloseSignUpOffer} />
@@ -44,13 +48,19 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 flex-1 justify-center">
-            <div className="flex items-center space-x-1 cursor-pointer">
+            <Link to="/" className="flex items-center space-x-1 cursor-pointer">
               <span className="text-navbar-menu-text">Shop</span>
               <ChevronDown className="w-4 h-4" />
-            </div>
-            <span className="text-navbar-menu-text cursor-pointer">On Sale</span>
-            <span className="text-navbar-menu-text cursor-pointer">New Arrivals</span>
-            <span className="text-navbar-menu-text cursor-pointer">Brands</span>
+            </Link>
+            <Link to="/" className="text-navbar-menu-text cursor-pointer">
+              On Sale
+            </Link>
+            <Link to="/" className="text-navbar-menu-text cursor-pointer">
+              New Arrivals
+            </Link>
+            <Link to="/" className="text-navbar-menu-text cursor-pointer">
+              Brands
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -67,7 +77,7 @@ export const Header = () => {
                 className="pl-10 pr-4 py-3 w-60 lg:w-72 xl:w-96 bg-[#F0F0F0] border-0 rounded-full outline-none"
               />
             </div>
-            
+
             {/* Cart */}
             <Link to="/cart" className="relative">
               <img className="w-7 h-7" src="/cart.svg" alt="cart" />
@@ -77,14 +87,14 @@ export const Header = () => {
                 </span>
               )}
             </Link>
-            
+
             {/* Profile */}
             <button className="hidden md:block">
               <img className="w-7 h-7" src="/profile.svg" alt="profile" />
             </button>
-            
+
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -98,11 +108,11 @@ export const Header = () => {
           <div
             className={`
               fixed top-3 left-0 w-full h-screen bg-white z-40
-              transform transition-transform duration-100 ease-in-out
-              ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+              transform transition-transform duration-200 ease-in-out
+              ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
             `}
           >
-            <div className="flex justify-between items-center p-4 border-b">
+            <div className="flex justify-between items-center p-4">
               <span className="font-alfa text-navbar-h1 font-bold">FS</span>
               <button onClick={() => setIsMobileMenuOpen(false)}>
                 <X className="w-6 h-6" />
@@ -123,15 +133,23 @@ export const Header = () => {
                 />
               </div>
             </div>
-            
+
             {/* Mobile Menu Items */}
-            <div className="flex flex-col p-4 space-y-6">
-              <span className="text-navbar-menu-text cursor-pointer text-lg">Shop</span>
-              <span className="text-navbar-menu-text cursor-pointer text-lg">On Sale</span>
-              <span className="text-navbar-menu-text cursor-pointer text-lg">New Arrivals</span>
-              <span className="text-navbar-menu-text cursor-pointer text-lg">Brands</span>
-              
-              <div className="pt-6 border-t">
+            <div className="flex flex-col p-4 space-y-6 border-t">
+              <Link to="/" className="text-navbar-menu-text text-lg">
+                Shop
+              </Link>
+              <Link to="/" className="text-navbar-menu-text text-lg">
+                On Sale
+              </Link>
+              <Link to="/" className="text-navbar-menu-text text-lg">
+                New Arrivals
+              </Link>
+              <Link to="/" className="text-navbar-menu-text text-lg">
+                Brands
+              </Link>
+              <hr />
+              <div className="">
                 <button className="flex items-center gap-3">
                   <img className="w-6 h-6" src="/profile.svg" alt="profile" />
                   <span className="text-navbar-menu-text text-lg">Profile</span>
@@ -140,7 +158,6 @@ export const Header = () => {
             </div>
           </div>
         )}
-
       </header>
     </>
   );

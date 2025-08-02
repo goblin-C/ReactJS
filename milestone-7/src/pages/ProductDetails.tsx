@@ -71,11 +71,15 @@ const SelectionGroup = ({
           <button
             key={value}
             onClick={() => onSelect(value)}
-            className={`w-8 h-8 md:w-10 md:h-10 rounded-full ${option.class} border-2 ${
+            className={`w-8 h-8 md:w-10 md:h-10 rounded-full ${
+              option.class
+            } border-2 ${
               isSelected ? "border-black" : "border-gray-300"
             } flex items-center justify-center transition-all hover:scale-110`}
           >
-            {isSelected && <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />}
+            {isSelected && (
+              <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />
+            )}
           </button>
         ) : (
           <button
@@ -107,11 +111,14 @@ export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState("Large");
   const [selectedColor, setSelectedColor] = useState("brown");
   const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  
   // Check if current product with selected options is already in cart
   const isInCart = cartItems.some(
-    (item: any) => item.id === product?.id && item.size === selectedSize && item.color === selectedColor
+    (item: any) =>
+      item.id === product?.id &&
+      item.size === selectedSize &&
+      item.color === selectedColor
   );
 
   useEffect(() => {
@@ -132,6 +139,11 @@ export default function ProductDetails() {
       fetchProduct();
     }
   }, [id]);
+  useEffect(() => {
+    if (product?.images?.length) {
+      setSelectedImage(product.images[0]);
+    }
+  }, [product]);
 
   const sizes = ["Small", "Medium", "Large", "X-Large"];
   const colors = [
@@ -161,7 +173,7 @@ export default function ProductDetails() {
             <div className="block md:hidden">
               <div className="w-full aspect-square overflow-hidden">
                 <img
-                  src={product.images[0] || product.images?.[0]}
+                  src={selectedImage || product.images[0]}
                   alt={product.title}
                   className="rounded-2xl w-full h-full object-cover"
                 />
@@ -170,18 +182,22 @@ export default function ProductDetails() {
               {product.images && product.images.length > 1 && (
                 <div className="flex gap-2 mt-3 overflow-x-auto">
                   {product.images.slice(0, 4).map((img: string, i: number) => (
-                    <div key={i} className="flex-shrink-0 w-16 h-16 overflow-hidden">
+                    <div
+                      key={i}
+                      className="flex-shrink-0 w-16 h-16 overflow-hidden"
+                    >
                       <img
                         src={img}
                         alt={`${product.title} view ${i + 1}`}
-                        className="rounded-lg w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                        className={`rounded-xl w-full h-full object-cover cursor-pointer hover:opacity-80 transition ${selectedImage === img ? "ring-2 ring-black" : ""}`}
+                        onClick={() => setSelectedImage(img)}
                       />
                     </div>
                   ))}
                 </div>
               )}
             </div>
-            
+
             {/* Tablet and Desktop: Side thumbnails + main image */}
             <div className="hidden md:flex gap-3 lg:gap-4">
               {/* Thumbnail column */}
@@ -196,17 +212,23 @@ export default function ProductDetails() {
                       <img
                         src={img}
                         alt={`${product.title} view ${i + 1}`}
-                        className="rounded-xl w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                        className={`
+        rounded-xl w-full h-full object-cover cursor-pointer hover:opacity-80 transition
+        ${selectedImage === img ? "ring-2 ring-black" : ""}
+      `}
+                        onClick={() => setSelectedImage(img)}
                       />
                     </div>
                   ))}
               </div>
-              
+
               {/* Main image */}
               <div className="flex-1 max-w-md lg:max-w-lg">
                 <div className="w-full aspect-[4/5] overflow-hidden">
                   <img
-                    src={product.images[0] || product.images?.[0]}
+                    src={
+                      selectedImage || product.images[0] || product.images?.[0]
+                    }
                     alt={product.title}
                     className="rounded-2xl w-full h-full object-cover"
                   />
@@ -219,8 +241,12 @@ export default function ProductDetails() {
           <div className="w-full space-y-4 md:space-y-6">
             {/* Title and Price */}
             <div className="space-y-2">
-              <h1 className="text-lg md:text-xl lg:text-2xl xl:text-navbar-h1 font-alfa leading-tight">{product.title}</h1>
-              <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">${product.price}</span>
+              <h1 className="text-lg md:text-xl lg:text-2xl xl:text-navbar-h1 font-alfa leading-tight">
+                {product.title}
+              </h1>
+              <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
+                ${product.price}
+              </span>
             </div>
 
             {/* Description */}
@@ -240,7 +266,7 @@ export default function ProductDetails() {
                 type="color"
               />
             </div>
-            
+
             {/* Size Selection */}
             <div className="pb-4 md:pb-6 border-b border-[#0000001A]">
               <SelectionGroup
@@ -250,13 +276,13 @@ export default function ProductDetails() {
                 onSelect={setSelectedSize}
               />
             </div>
-            
+
             {/* Quantity and Add to Cart */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <div className="flex-shrink-0">
                 <QuantitySelector quantity={quantity} onUpdate={setQuantity} />
               </div>
-              <Button 
+              <Button
                 buttonText="Add to Cart"
                 width="100%"
                 className="flex-0 min-w-0"
@@ -268,24 +294,26 @@ export default function ProductDetails() {
                     image: product.images?.[0] || product.category?.image,
                     size: selectedSize,
                     color: selectedColor,
-                    quantity
+                    quantity,
                   };
-                  
+
                   dispatch(addItem(cartItem));
-                  dispatch(showToast({ 
-                    message: isInCart ? 'Cart updated successfully!' : 'Product added to cart successfully!', 
-                    type: 'success' 
-                  }));
-                  navigate('/');
+                  dispatch(
+                    showToast({
+                      message: isInCart
+                        ? "Cart updated successfully!"
+                        : "Product added to cart successfully!",
+                      type: "success",
+                    })
+                  );
+                  navigate("/");
                 }}
               />
             </div>
           </div>
         </div>
       </div>
-      
 
-      
       <Footer />
     </div>
   );
