@@ -19,16 +19,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     };
   return (
     <div className="group cursor-pointer" onClick={() => handleClick(product.id.toString())}>
-      <div className="rounded-[20px] overflow-hidden mb-4 flex items-center justify-center">
+      <div className="rounded-2xl overflow-hidden mb-4 aspect-square">
         <img
           src={product.images[0] || "/placeholder.svg"}
           alt={product.title}
-          className="w-full h-[298px] rounded-[20px] object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <h3 className="text-product-card-title mb-2 truncate text-left" title={product.title}>{product.title}</h3>
-      <p className="text-product-card-price text-left">{'$' + product.price}</p>
+      <h3 className="text-base md:text-lg lg:text-product-card-title mb-2 truncate text-left font-semibold" title={product.title}>{product.title}</h3>
+      <p className="text-lg md:text-xl lg:text-product-card-price text-left font-bold">{'$' + product.price}</p>
     </div>
   )
 }
-// w-[18.625rem] h-[18.4375rem]

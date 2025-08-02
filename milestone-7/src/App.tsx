@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistor } from "../store";
-import { Header } from '../components/Header'
+import { persistor } from "./store";
+import { Header } from './components/Header'
 
-import Homepage from '../components/main_component'
-import ProductDetails from '../pages/ProductDetails'
-import Cart from '../pages/Cart'
+import Homepage from './components/main_component'
+import ProductDetails from './pages/ProductDetails'
+import Cart from './pages/Cart'
 
 function App() {
   return (

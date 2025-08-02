@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import useApi from '../../services/public_api';
+import useApi from '../../services/useApi';
 
 // Define the shape of the state
 interface ListState {

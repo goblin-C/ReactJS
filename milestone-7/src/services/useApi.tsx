@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = (url: string = '') => {
+const useApi = (url: string = '') => {
     const baseURL = url ? url : 'https://api.escuelajs.co/api/v1/';
     
     /**
@@ -28,7 +28,7 @@ const api = (url: string = '') => {
      * Makes a POST request to the specified endpoint with a payload.
      * @returns An object with `error` and `data` properties.
      */
-    const postAPI = async (endpoint: string, payload: any) => {
+    const PostAPI = async (endpoint: string, payload: any) => {
         try {
             const { data } = await axios.post(`${baseURL}${endpoint}`, payload);
             return { error: false, data };
@@ -47,7 +47,7 @@ const api = (url: string = '') => {
      * Makes a PATCH request to the specified endpoint with a payload.
      * @returns An object with `error` and `data` properties.
      */
-    const patchAPI = async (endpoint: string, payload?: any) => {
+    const PatchAPI = async (endpoint: string, payload?: any) => {
         try {
             const data = await axios.patch(`${baseURL}${endpoint}`, payload);
             return { error: false, data: data.data };
@@ -65,7 +65,7 @@ const api = (url: string = '') => {
      * Makes a PUT request to the specified endpoint with a payload.
      * @returns An object with `error` and `data` properties.
      */
-    const putAPI = async (endpoint: string, payload: any) => {
+    const PutAPI = async (endpoint: any, payload?: any, header = true) => {
         try {
             const data = await axios.put(`${baseURL}${endpoint}`, payload);
             return { error: false, data: data.data };
@@ -80,7 +80,7 @@ const api = (url: string = '') => {
         }
     };
     
-    return { getAPI, postAPI, patchAPI, putAPI };
+    return { getAPI, PostAPI, PatchAPI, PutAPI };
 };
 
-export default api;
+export default useApi;

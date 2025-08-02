@@ -30,33 +30,35 @@ export const Footer = () => {
   const paymentMethods = ["visa", "mastercard", "paypal", "apple", "google"];
 
   return (
-    <footer className="bg-[#F0F0F0] py-16">
-      <div className="px-8 lg:px-[100px]">
-        <div className="flex flex-col md:flex-row gap-[106px] 2xl:justify-between">
-          <div className="w-fit max-w-xs">
-            <h3 className="text-navbar-h1 font-alfa mb-[25px]">FAKESTORE</h3>
-            <p className="text-[#00000099] text-footer-description-text mb-[35px]">
-              We have clothes that suits your style<br/>and which you're proud to
-              wear.<br/>From women to men.
+    <footer className="bg-[#F0F0F0] py-8 md:py-12 lg:py-16">
+      <div className="px-4 md:px-8 lg:px-16 xl:px-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Brand section */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl md:text-2xl lg:text-navbar-h1 font-alfa mb-4 md:mb-6">FAKESTORE</h3>
+            <p className="text-[#00000099] text-sm md:text-footer-description-text mb-6 md:mb-8 leading-relaxed">
+              We have clothes that suits your style and which you're proud to
+              wear. From women to men.
             </p>
             <div className="flex gap-3">
               {Array(4)
                 .fill(0)
                 .map((_, i) => (
-                  <img key={i} src={`/${i+1}.png`}></img>
+                  <img key={i} src={`/${i+1}.png`} className="w-6 h-6 md:w-8 md:h-8" alt={`Social ${i+1}`} />
                 ))}
             </div>
           </div>
 
+          {/* Footer sections */}
           {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-footer-menu-title text-[#111111] mb-6">
+            <div key={section.title} className="">
+              <h4 className="text-sm md:text-footer-menu-title text-[#111111] mb-4 md:mb-6 font-medium">
                 {section.title}
               </h4>
-              <ul className="space-y-6 text-[#00000099] text-footer-menu-text">
+              <ul className="space-y-3 md:space-y-4 text-[#00000099] text-sm md:text-footer-menu-text">
                 {section.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="hover:text-black">
+                    <a href="#" className="hover:text-black transition-colors">
                       {link}
                     </a>
                   </li>
@@ -66,15 +68,16 @@ export const Footer = () => {
           ))}
         </div>
 
-        <div className="border-t border-gray-300 mt-8 lg:mt-12 pt-6 lg:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 lg:gap-0">
-          <p className="text-[#00000099]">
+        {/* Bottom section */}
+        <div className="border-t border-gray-300 mt-8 lg:mt-12 pt-6 lg:pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#00000099] text-sm text-center md:text-left">
             Shop.co © 2000-2023, All Rights Reserved
           </p>
-          <div className="flex">
+          <div className="flex gap-2">
             {paymentMethods.map((method, i) => (
               <div key={i}>
                 <img
-                  className="object-cover block"
+                  className="w-8 h-6 md:w-10 md:h-8 object-contain"
                   src={`/${method}.png`}
                   alt={method}
                 />
